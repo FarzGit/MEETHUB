@@ -1,9 +1,18 @@
-import LandingPageNav from "../navbar/landingPageNav"
+import LandingPageNav from "../../components/navbar/landingPageNav"
 import './landingCSS.css'
-
-
+import { openSignupModal } from '../../slices/modalSlice/signupModalSlice'
+import { useDispatch } from 'react-redux'
+import MyModal from "../../components/forms/signUpForm"
 
 const LandingPage = () => {
+
+
+    const dispatch = useDispatch()
+
+    const handleGetStarted = () => {
+        dispatch(openSignupModal())
+    }
+
     return (
         <>
             <LandingPageNav />
@@ -17,12 +26,13 @@ const LandingPage = () => {
                             team collaborations, or client presentations,
                             Meethub provides the tools and platform to make your virtual interactions
                             productive and efficient</span>
-                        <button className=" btn mt-6 ">GET STARTED</button>
+                        <button className=" btn mt-6 " onClick={handleGetStarted}>GET STARTED</button>
                     </div>
                     <div>
                         <img className="image xl:h-[545px] lg:h-[500px] md:h-[400px] max-sm:hidden  " src="/src/assets/iamges/landing-page-1-image.png" alt="Image" />
                     </div>
                 </div>
+                <MyModal />
             </div>
         </>
     )

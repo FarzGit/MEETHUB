@@ -1,11 +1,17 @@
 import {configureStore} from '@reduxjs/toolkit'
 import signupModal from '../slices/modalSlice/signupModalSlice'
+import SingInModalSlice from '../slices/modalSlice/SingInModalSlice'
+import OtpSlice  from '../slices/modalSlice/otp'
 
 
 const Store = configureStore({
 
     reducer:{
-        signupModal:signupModal
+        signupModal:signupModal,
+        SingInModalSlice:SingInModalSlice,
+        OtpSlice:OtpSlice
+       
+        
 
     }
 

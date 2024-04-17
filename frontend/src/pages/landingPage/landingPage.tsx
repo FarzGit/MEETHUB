@@ -2,7 +2,7 @@ import LandingPageNav from "../../components/navbar/landingPageNav"
 import './landingCSS.css'
 import { openSignupModal } from '../../slices/modalSlice/signupModalSlice'
 import { useDispatch } from 'react-redux'
-import MyModal from "../../components/forms/signUpForm"
+import MyModal from "../../components/forms/signUp/signUpForm"
 
 const LandingPage = () => {
 

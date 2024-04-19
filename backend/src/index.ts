@@ -1,5 +1,6 @@
 import { app } from "./infrastructureLayer/config/app"; // assuming app.ts is in the same directory
 import dotenv from 'dotenv';
+import connectDb from "./infrastructureLayer/config/db";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const start = () => {
     });
 
     app.listen(port, () => {
+        connectDb()
         console.log(`Server is running on http://localhost:${port}`);
     });
 };

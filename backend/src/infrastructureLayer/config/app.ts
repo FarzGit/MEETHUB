@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import userRoute from '../routes/userRoute';
 
 // Load environment variables
 dotenv.config();
@@ -17,3 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_SERVER, credentials: true }));
+
+
+
+//Routes
+
+app.use('/api/user',userRoute)

@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { FcGoogle } from 'react-icons/fc';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
-import {openSignupModal } from '../../../slices/modalSlice/signupModalSlice';
+import {openSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
 import { closeSignInModal } from '../../../slices/modalSlice/SingInModalSlice';
 
 const style: React.CSSProperties = {

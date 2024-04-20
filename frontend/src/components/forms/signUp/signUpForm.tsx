@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { FcGoogle } from 'react-icons/fc';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
-import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice';
+import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
 import {openSignInModal} from '../../../slices/modalSlice/SingInModalSlice'
 import SignInModal from '../Login/signIn';
 import OtpModal from '../otp/otp';

@@ -1,7 +1,7 @@
 
 import './landingPageNav.css'
 import {useDispatch } from 'react-redux'
-import {openSignupModal} from '../../slices/modalSlice/signupModalSlice'
+import {openSignupModal} from '../../slices/modalSlice/signupModalSlice.ts'
 import { openSignInModal } from '../../slices/modalSlice/SingInModalSlice'
 
 const LandingPageNav = ():JSX.Element => {

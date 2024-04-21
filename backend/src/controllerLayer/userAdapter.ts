@@ -30,4 +30,49 @@ export class UserAdapters {
             next(error)
         }
     }
+
+
+    async sendEmail(req: Req, res: Res, next: Next) {
+        try {
+
+            const user = await this.userusecases.verifyEmail(req.body)
+
+            res.status(user.status).json({
+                success: user.success,
+                message: user.message
+            })
+
+
+        } catch (error) {
+
+            next(error)
+
+        }
+    }
+
+
+    async emailVerification(req: Req, res: Res, next: Next) {
+        try {
+            const user = await this.userusecases.emailVerification(req.body)
+            user &&
+                res.status(user.status).json({
+                    success: user.success,
+                    // data: user.data,
+                    message: user.message,
+                });
+        } catch (err) {
+            next(err);
+        }
+    }
+
+
+
 }
+
+
+
+
+
+
+
+

@@ -2,6 +2,9 @@ import { IUserRepository } from "../interface/repository/IuserRepository";
 import Ijwt from "../interface/services/Ijwt";
 import { createUser } from "./user/createUser";
 import IHashPassword from "../interface/services/IHashPassword";
+import INodemailer from "../interface/services/Inodemailer";
+import { verifyEmail } from "./user/sendMail";
+import { emailVerification } from "./user/emailVerification";
 
 
 export class UserUseCase{
@@ -9,15 +12,18 @@ export class UserUseCase{
     private readonly userRepository: IUserRepository
     private readonly jwt:Ijwt;
     private readonly bycrypt:IHashPassword
+    private readonly nodemailer:INodemailer
 
     constructor(
         userRepository:IUserRepository,
         jwt:Ijwt,
-        bycrypt:IHashPassword
+        bycrypt:IHashPassword,
+        nodemailer : INodemailer
     ){
         this.userRepository = userRepository
         this.jwt = jwt
         this.bycrypt = bycrypt
+        this.nodemailer = nodemailer
     }
 
 
@@ -41,4 +47,17 @@ export class UserUseCase{
         )
     }
 
+
+
+    async verifyEmail({email,username}:{email:string; username:string}){
+        return verifyEmail(this.userRepository,this.nodemailer,email,username)
+    }
+
+    async emailVerification({otp,email}:{otp:string; email:string}){
+
+        return emailVerification(this.nodemailer,otp,email)
+
+    }
+
+    
 }

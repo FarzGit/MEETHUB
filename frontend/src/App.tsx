@@ -1,6 +1,8 @@
 import LandingPage from "./pages/landingPage/landingPage"
 import MainPage from "./pages/userMainPage/mainPage";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   
@@ -9,6 +11,7 @@ function App() {
     <>
    
       <BrowserRouter>
+      <ToastContainer autoClose={2000}/>
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="/home" element={<MainPage/>} />

@@ -5,7 +5,8 @@ import { IUser } from "../../../domainLayer/user";
 export interface StoreData{
     _id:string;
     username:string;
-    email:string
+    email:string;
+    isVerified?:boolean;
 }
 
 

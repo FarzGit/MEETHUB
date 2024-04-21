@@ -7,12 +7,21 @@ const router = express.Router()
 
 
 router.post('/signUp',(req:Request,res:Response,next:NextFunction)=>{
-    console.log('entered into route')
-
+    // console.log('entered into route')
     userAdapter.createUser(req,res,next)
-
-
 })
+
+router.post('/sendEmail',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.sendEmail(req,res,next)
+})
+
+router.post('/verifyEmail',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.emailVerification(req,res,next)
+    
+})
+
+
+
 
 
 

@@ -5,6 +5,7 @@ import IHashPassword from "../interface/services/IHashPassword";
 import INodemailer from "../interface/services/Inodemailer";
 import { verifyEmail } from "./user/sendMail";
 import { emailVerification } from "./user/emailVerification";
+import { loginUser } from "./user/loginUser";
 
 
 export class UserUseCase{
@@ -48,6 +49,11 @@ export class UserUseCase{
     }
 
 
+    async loginUser({email,password}:{email:string,password:string}){
+        return loginUser(this.userRepository,this.bycrypt,this.jwt,email,password)
+    }
+
+
 
     async verifyEmail({email,username}:{email:string; username:string}){
         return verifyEmail(this.userRepository,this.nodemailer,email,username)
@@ -58,6 +64,8 @@ export class UserUseCase{
         return emailVerification(this.nodemailer,otp,email)
 
     }
+
+
 
     
 }

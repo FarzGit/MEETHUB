@@ -20,7 +20,7 @@ export const createUser = async (
             password: hashedPassword,
         }
         const createNewUser = await userRepository.createUser(newUser)
-        const token = jwt.createJWT(createNewUser._id as string, createNewUser.email, createNewUser.username)
+        const token = jwt.createJWT(createNewUser._id as string, createNewUser.email,"register", createNewUser.username)
         return {
             status: 200,
             success: true,

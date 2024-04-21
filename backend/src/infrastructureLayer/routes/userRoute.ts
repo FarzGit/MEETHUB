@@ -11,6 +11,11 @@ router.post('/signUp',(req:Request,res:Response,next:NextFunction)=>{
     userAdapter.createUser(req,res,next)
 })
 
+router.post('/login',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.loginUser(req,res,next)
+
+})
+
 router.post('/sendEmail',(req:Request,res:Response,next:NextFunction)=>{
     userAdapter.sendEmail(req,res,next)
 })

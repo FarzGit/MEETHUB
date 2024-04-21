@@ -5,6 +5,11 @@ export interface FormSignUp {
     confirmpassword: string;
 }
 
+export interface FormSignIn{
+    email:string;
+    password:string
+}
+
 
 
 export interface MyError {

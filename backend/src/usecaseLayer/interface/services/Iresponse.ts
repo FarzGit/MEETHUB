@@ -10,7 +10,7 @@ export interface StoreData{
 }
 
 
-export interface IResponse<T = StoreData | string>{
+export interface IResponse<T = StoreData | string |null>{
     status:number;
     success:boolean;
     message?:string;

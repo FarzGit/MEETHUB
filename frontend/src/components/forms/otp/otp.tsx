@@ -52,6 +52,7 @@ const OtpModal: React.FC = () => {
                 const result = await register({ username, email, password }).unwrap();
 
                 if (result) {
+                    console.log(result.user)
                     dispatch(setCredential({ ...result.user }));
                     dispatch(closeOtpModal());
                     dispatch(clearRegister());

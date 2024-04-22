@@ -93,6 +93,39 @@ export class UserAdapters {
 
 
 
+    // @desc    Login with google auth
+    //route     POST api/user/googleAuth
+    async googleAuth(req:Req,res:Res,next:Next){
+        try {
+
+            console.log('entered google authh',req.body)
+            
+
+            const user = await this.userusecases.googleAuth(req.body)
+
+            user &&
+            res.cookie("userJwt",user.token,{
+                httpOnly:true,
+                sameSite:'strict',
+                maxAge:30 * 24 * 60 * 60 * 1000,
+            })
+
+            res.status(user.status).json({
+                success:user.success,
+                data:user.data,
+                message:user.message
+            })
+            
+        } catch (error) {
+            next(error)
+            
+        }
+    }
+
+
+
+
+
 
 }
 

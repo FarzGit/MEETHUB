@@ -69,6 +69,7 @@ export class UserAdapters {
     async loginUser(req:Req,res:Res,next:Next){
         try {
 
+
             const user = await this.userusecases.loginUser(req.body)
             user &&
             res.cookie("userJwt",user.token,{

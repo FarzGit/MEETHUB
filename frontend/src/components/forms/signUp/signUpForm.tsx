@@ -11,10 +11,12 @@ import OtpModal from '../otp/otp';
 // import { openOtpModal } from '../../../slices/modalSlice/otp';
 import { useFormik } from 'formik'
 import style from '../modalStyles/modalStyle.tsx';
-import { FormSignUp } from '../../../validations/validationTypes.ts';
+import { FormSignUp,MyError } from '../../../validations/validationTypes.ts';
 import { clearRegister, setRegister } from '../../../slices/authSlice.ts';
 import { useSendOtpTOMailMutation } from '../../../slices/userSlice.ts';
 import { openOtpModal } from '../../../slices/modalSlice/otp.ts';
+import { signUpValidation } from '../../../validations/yupValidation.tsx';
+import { toast } from 'react-toastify';
 
 
 
@@ -42,8 +44,9 @@ const MyModal: React.FC = () => {
     }
 
 
-    const { values, handleChange, handleSubmit } = useFormik({
+    const { values, handleChange, handleSubmit,errors,touched } = useFormik({
         initialValues: initialValues,
+        validationSchema: signUpValidation,
 
         onSubmit: async (values) => {
             dispatch(setRegister({ ...values }))
@@ -59,7 +62,7 @@ const MyModal: React.FC = () => {
 
             } catch (err) {
                 dispatch(clearRegister())
-                console.log(err);
+                toast.error((err as MyError)?.data?.message || (err as MyError)?.error);
 
             }
 
@@ -115,6 +118,9 @@ const MyModal: React.FC = () => {
                                     placeholder="username"
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                 />
+                                {errors.username && touched.username && (
+                                    <div className="text-red-500 text-[12px]">{errors.username}</div>
+                                )}
                                 <span className="text-[15px] p-1 text-gray-700">Email</span>
                                 <input
                                     type="text"
@@ -123,7 +129,9 @@ const MyModal: React.FC = () => {
                                     onChange={handleChange}
                                     placeholder="Email"
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                />
+                                />{errors.email && touched.email && (
+                                    <div className="text-red-500 text-[12px]">{errors.email}</div>
+                                )}
                                 <span className="text-[15px] p-1 text-gray-700">Password</span>
                                 <input
                                     type="text"
@@ -133,6 +141,9 @@ const MyModal: React.FC = () => {
                                     placeholder="Password"
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                 />
+                                {errors.password && touched.password && (
+                                    <div className="text-red-500 text-[12px]">{errors.password}</div>
+                                )}
                                 <span className="text-[15px] p-1 text-gray-700">Confirm password</span>
                                 <input
                                     type="text"
@@ -142,6 +153,9 @@ const MyModal: React.FC = () => {
                                     placeholder="Confirm password"
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                 />
+                                {errors.confirmpassword && touched.confirmpassword && (
+                                    <div className="text-red-500 text-[12px]">{errors.confirmpassword}</div>
+                                )}
                                 <div className="flex pt-4 justify-center">
                                     <button type='submit' className="bg-blue-500 rounded-md h-[40px] w-[110px] mr-5  text-white">SignUp</button>
                                     <button className=" rounded-md h-[40px] p-2 w-[110px] flex gap-2 border">

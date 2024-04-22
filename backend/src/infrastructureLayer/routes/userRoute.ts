@@ -35,4 +35,5 @@ router.post('/verifyEmail',(req:Request,res:Response,next:NextFunction)=>{
 
 
 
+
 export default router

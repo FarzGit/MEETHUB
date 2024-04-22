@@ -9,12 +9,12 @@ import { openSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts'
 import { closeSignInModal } from '../../../slices/modalSlice/SingInModalSlice';
 import style from '../modalStyles/modalStyle.tsx';
 import { useFormik } from 'formik';
-import { FormSignIn } from '../../../validations/validationTypes.ts';
+import { FormSignIn,MyError } from '../../../validations/validationTypes.ts';
 import { useUserLoginMutation } from '../../../slices/userSlice.ts';
 import { useNavigate } from 'react-router-dom';
 import { setCredential } from '../../../slices/authSlice.ts';
 import { toast } from 'react-toastify';
-
+import { signInValidation } from '../../../validations/yupValidation.tsx';
 
 
 
@@ -41,24 +41,26 @@ const SignInModal: React.FC = () => {
     }
 
 
-    const { values, handleSubmit, handleChange } = useFormik({
+    const { values, handleSubmit, handleChange,errors,touched } = useFormik({
         initialValues: initialValues,
+        validationSchema: signInValidation,
+
 
         onSubmit: async (values) => {
             try {
 
                 const { email, password } = values
                 const res = await userLogin({ email, password }).unwrap()
-                if (res) {
 
                     dispatch(setCredential({ ...res.data }))
                     dispatch(closeSignInModal())
                     navigate('/home')
                     toast.success(res.message)
 
-                }
-            } catch (error) {
-                console.log(error)
+              
+            } catch (err) {
+                console.log(err)
+                toast.error((err as MyError)?.data?.message || (err as MyError)?.error);
 
             }
         }
@@ -93,6 +95,9 @@ const SignInModal: React.FC = () => {
                                     placeholder="Email"
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                 />
+                                {errors.email && touched.email && (
+                                    <div className="text-red-500 text-[12px]">{errors.email}</div>
+                                )}
                                 <span className="text-[15px] p-1 text-gray-700">Password</span>
                                 <input
                                     type="password"

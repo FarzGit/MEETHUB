@@ -32,6 +32,11 @@ router.post('/googleAuth',(req:Request,res:Response,next:NextFunction)=>{
 
 })
 
+router.post('/logout',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.logout(req,res,next)
+
+})
+
 
 
 

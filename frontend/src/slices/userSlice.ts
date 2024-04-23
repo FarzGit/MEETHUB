@@ -39,7 +39,14 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 method:'POST',
                 body:data
             })
+        }),
+        logout:builder.mutation({
+            query:()=>({
+                url:`${BASE_URL}/logout`,
+                method:'POST'
+            })
         })
+
     })
 })
 
@@ -47,5 +54,6 @@ export const {useRegisterMutation,
             useSendOtpTOMailMutation,
             useOtpVerificationMutation,
             useUserLoginMutation,
-            useGoogleAuthMutation
+            useGoogleAuthMutation,
+            useLogoutMutation
 } = userApiSlice

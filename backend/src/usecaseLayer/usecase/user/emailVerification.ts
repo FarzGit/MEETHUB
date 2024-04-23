@@ -20,7 +20,7 @@ export const emailVerification = async (
             return {
                 status: 401,
                 success: false,
-                message: "Verification failed",
+                message: "Otp Verification failed please try later",
             };
         }
 

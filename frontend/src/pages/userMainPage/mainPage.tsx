@@ -1,11 +1,24 @@
 
+import { useEffect } from 'react'
+import { RootState } from '../../app/store'
 import HomePageNav from '../../components/navbar/homePageNav'
 import './mainPage.css'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 const MainPage = () => {
 
+    const {userInfo} = useSelector((state:RootState)=>state.authSlice)
+    const navigate = useNavigate()
 
+    useEffect(()=>{
+
+        if(userInfo){
+            navigate('/home')
+        }
+
+    },[])
 
 
     return (

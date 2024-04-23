@@ -1,7 +1,6 @@
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { FcGoogle } from 'react-icons/fc';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
@@ -12,14 +11,16 @@ import OtpModal from '../otp/otp';
 import { useFormik } from 'formik'
 import style from '../modalStyles/modalStyle.tsx';
 import { FormSignUp,MyError } from '../../../validations/validationTypes.ts';
-import { clearRegister, setRegister } from '../../../slices/authSlice.ts';
+import { clearRegister, setCredential, setRegister } from '../../../slices/authSlice.ts';
 import { useSendOtpTOMailMutation } from '../../../slices/userSlice.ts';
 import { openOtpModal } from '../../../slices/modalSlice/otp.ts';
 import { signUpValidation } from '../../../validations/yupValidation.tsx';
 import { toast } from 'react-toastify';
-
-
-
+import { useGoogleAuthMutation } from '../../../slices/userSlice.ts';
+// import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+import { GoogleLogin } from '@react-oauth/google';
 
 
 
@@ -30,8 +31,10 @@ const MyModal: React.FC = () => {
 
     const openModal = useSelector((state: RootState) => state.signupModal.value);
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const [otpSendToEmail] = useSendOtpTOMailMutation()
+    const [googleAuth] = useGoogleAuthMutation()
 
 
 
@@ -52,9 +55,11 @@ const MyModal: React.FC = () => {
             dispatch(setRegister({ ...values }))
 
             try {
+                console.log('entered to sign up handle button')
                 const { username, email } = values;
+                console.log(username,email)
                 const res = await otpSendToEmail({ username, email }).unwrap()
-                console.log(res)
+                console.log('result is :',res)
                 if (res) {
                     dispatch(closeSignupModal())
                     dispatch(openOtpModal())
@@ -90,7 +95,10 @@ const MyModal: React.FC = () => {
     // }
 
 
-
+    interface DecodedCredential {
+        name: string;
+        email: string;
+      }
 
 
 
@@ -134,7 +142,7 @@ const MyModal: React.FC = () => {
                                 )}
                                 <span className="text-[15px] p-1 text-gray-700">Password</span>
                                 <input
-                                    type="text"
+                                    type="password"
                                     name='password'
                                     value={values.password}
                                     onChange={handleChange}
@@ -146,7 +154,7 @@ const MyModal: React.FC = () => {
                                 )}
                                 <span className="text-[15px] p-1 text-gray-700">Confirm password</span>
                                 <input
-                                    type="text"
+                                    type="password"
                                     name='confirmpassword'
                                     value={values.confirmpassword}
                                     onChange={handleChange}
@@ -156,14 +164,57 @@ const MyModal: React.FC = () => {
                                 {errors.confirmpassword && touched.confirmpassword && (
                                     <div className="text-red-500 text-[12px]">{errors.confirmpassword}</div>
                                 )}
-                                <div className="flex pt-4 justify-center">
-                                    <button type='submit' className="bg-blue-500 rounded-md h-[40px] w-[110px] mr-5  text-white">SignUp</button>
-                                    <button className=" rounded-md h-[40px] p-2 w-[110px] flex gap-2 border">
-                                        <span className="pt-1">
-                                            <FcGoogle />
-                                        </span>
-                                        SignIn
-                                    </button>
+                                <div className="flex pt-4 justify-center flex-col gap-1 items-center" >
+                                    <button type='submit' className="bg-blue-500 rounded-md h-[40px] w-[110px]  text-white">SignUp</button>
+                                    <span className='text-[#C7C8CC]'>or</span>
+                                    <GoogleLogin
+                                        onSuccess={async (credentialResponse) => {
+                                            if (credentialResponse?.credential) {
+                                                const decoded = jwtDecode(credentialResponse.credential) as DecodedCredential;
+                                                const { name, email } = decoded;                            
+                                                const username = name
+
+                                                
+
+                                                const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                                                let password = '';
+                                                for (let i = 0; i < 6; i++) {
+                                                    const randomIndex = Math.floor(Math.random() * charset.length);
+                                                    password += charset.charAt(randomIndex);
+                                                }
+                                                
+
+                                                try {
+
+                                                    console.log(username)
+                                                    // console.log(email)
+                                                    // console.log(password)
+
+
+
+                                                    const res = await googleAuth({ username, email, password }).unwrap()
+                                                    // console.log(res.data)
+                                                    dispatch(setCredential({ ...res.data }));
+                                                    dispatch(closeSignupModal())
+                                                    toast.success(res.message);
+                                                    navigate('/home')
+                                                } catch (err) {
+                                                    toast.error(
+                                                        (err as MyError)?.data?.message || 
+                                                        (err as MyError)?.error
+                                                    );
+                                                }
+                                            } else {
+                                                console.log("Credential not found");
+                                                toast.error("Credential not found")
+                                            }
+
+
+                                        }}
+                                        onError={() => {
+                                            toast.error("Login failed");
+                                        }}
+                                    />
                                 </div>
                             </form>
                         </div>

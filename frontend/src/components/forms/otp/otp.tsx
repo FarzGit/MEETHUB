@@ -10,11 +10,15 @@ import style from '../modalStyles/modalStyle';
 import { useOtpVerificationMutation, useRegisterMutation, useSendOtpTOMailMutation } from '../../../slices/userSlice';
 import { clearRegister, setCredential } from '../../../slices/authSlice';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { openSignInModal } from '../../../slices/modalSlice/SingInModalSlice';
+import { MyError } from '../../../validations/validationTypes';
+
+
 
 const OtpModal: React.FC = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const openModal = useSelector((state: RootState) => state.OtpSlice.value);
     const [otpVerification] = useOtpVerificationMutation();
     const [register] = useRegisterMutation();
@@ -43,12 +47,19 @@ const OtpModal: React.FC = () => {
 
     const handleVerifyOtp = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
+
         try {
-            const { email }: any = registerInfo;
+            console.log('entered verify otp')
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const { email } : any = registerInfo;
             const res = await otpVerification({ otp, email }).unwrap();
 
+           console.log('Email is ',email)
+            console.log('result in verify otp is :',res)
+
             if (res.success) {
-                const { username, email, password }: any = registerInfo;
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const { username, email, password }:any = registerInfo;
                 const result = await register({ username, email, password }).unwrap();
 
                 if (result) {
@@ -56,23 +67,27 @@ const OtpModal: React.FC = () => {
                     dispatch(setCredential({ ...result.user }));
                     dispatch(closeOtpModal());
                     dispatch(clearRegister());
-                    navigate('/home');
+                    dispatch(openSignInModal())
                     toast.success('Successfully Registered');
                 }
             }
         } catch (err) {
             console.error(err);
-            toast.error('Verification Failed');
+            toast.error((err as MyError)?.data?.message || (err as MyError)?.error);
         }
     };
 
     const handleResendOTP = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        console.log('entered resend otp')
         e.preventDefault();
         setTimer(60);
         setShowResendButton(false);
         try {
-            const { email, username }: any = registerInfo;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const { email, username }:any = registerInfo;
+            console.log("otp send email and username is :",email,username)
             const res = await sendOtpToEmail({ username, email }).unwrap();
+            console.log(res)
             if (res) {
                 toast.success(res.message);
             }

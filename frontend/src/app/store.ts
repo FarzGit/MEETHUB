@@ -5,13 +5,16 @@ import OtpSlice from '../slices/modalSlice/otp'
 import { apiSlice } from '../slices/apiSlice.ts'
 import authSlice from '../slices/authSlice.ts'
 
+
 const Store = configureStore({
 
     reducer: {
         signupModal: signupModal,
         SingInModalSlice: SingInModalSlice,
         OtpSlice: OtpSlice,
-        authSlice:authSlice
+        authSlice: authSlice,
+
+
 
 
 

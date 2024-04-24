@@ -2,25 +2,23 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useSelector, useDispatch } from 'react-redux';
+import { useFormik } from 'formik'
+import { toast } from 'react-toastify';
+import { useGoogleAuthMutation } from '../../../slices/userSlice.ts';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
+import { GoogleLogin } from '@react-oauth/google';
 import { RootState } from '../../../app/store';
 import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
 import { openSignInModal } from '../../../slices/modalSlice/SingInModalSlice'
 import SignInModal from '../Login/signIn';
 import OtpModal from '../otp/otp';
-// import { openOtpModal } from '../../../slices/modalSlice/otp';
-import { useFormik } from 'formik'
 import style from '../modalStyles/modalStyle.tsx';
 import { FormSignUp,MyError } from '../../../validations/validationTypes.ts';
 import { clearRegister, setCredential, setRegister } from '../../../slices/authSlice.ts';
 import { useSendOtpTOMailMutation } from '../../../slices/userSlice.ts';
 import { openOtpModal } from '../../../slices/modalSlice/otp.ts';
 import { signUpValidation } from '../../../validations/yupValidation.tsx';
-import { toast } from 'react-toastify';
-import { useGoogleAuthMutation } from '../../../slices/userSlice.ts';
-// import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
-import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
-import { GoogleLogin } from '@react-oauth/google';
 
 
 
@@ -52,27 +50,20 @@ const MyModal: React.FC = () => {
         validationSchema: signUpValidation,
 
         onSubmit: async (values) => {
-            dispatch(setRegister({ ...values }))
+            dispatch(setRegister({ ...values }));
 
             try {
-                console.log('entered to sign up handle button')
+                console.log(values)
                 const { username, email } = values;
-                console.log(username,email)
-                const res = await otpSendToEmail({ username, email }).unwrap()
-                console.log('result is :',res)
-                if (res) {
-                    dispatch(closeSignupModal())
-                    dispatch(openOtpModal())
-                }
-
+                const res = await otpSendToEmail({ username, email }).unwrap();
+                    dispatch(closeSignupModal());
+                    dispatch(openOtpModal());
+                    toast.success(res.message)
             } catch (err) {
                 dispatch(clearRegister())
                 toast.error((err as MyError)?.data?.message || (err as MyError)?.error);
-
             }
-
-
-        }
+        },
 
     })
 
@@ -88,11 +79,7 @@ const MyModal: React.FC = () => {
         dispatch(openSignInModal())
     }
 
-    // const handleSubmit = ()=>{
-    //     dispatch(closeSignupModal())
-    //     dispatch(openOtpModal())
 
-    // }
 
 
     interface DecodedCredential {

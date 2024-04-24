@@ -19,7 +19,7 @@ export const createUser = async (
         const user = await userRepository.findUser(email)
         console.log(user)
 
-        if(!user){
+        // if(!user){
 
             const hashedPassword = await bycrypt.createHash(password)
             const newUser = {
@@ -36,8 +36,8 @@ export const createUser = async (
                 token: token,
                 data: createNewUser
             }
-        }
-        throw ErrorResponse.badRequest('User already exist')
+        // }
+        // throw ErrorResponse.badRequest('User already exist')
 
 
 

@@ -8,6 +8,8 @@ export const emailVerification = async (
 ): Promise<IResponse> => {
 
     try {
+
+        console.log(email,',',otp)
         const verify = await nodemailer.verifyEmail(otp, email)
         console.log(verify)
         if (verify) {

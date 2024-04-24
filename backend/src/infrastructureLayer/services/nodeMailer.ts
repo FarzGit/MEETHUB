@@ -14,6 +14,7 @@ class NodeMailer implements INodemailer {
         for (let i = 0; i < 6; i++) {
             otp += digits[Math.floor(Math.random() * 10)];
         }
+        console.log('the new otp is :',otp)
         return otp;
     }
 
@@ -75,6 +76,8 @@ class NodeMailer implements INodemailer {
         try {
 
             const expectedOTP = this.otps.get(email);
+            console.log('the expected otp is :',expectedOTP)
+            console.log('the Entered otp is :',enteredOtp)
             if (expectedOTP === enteredOtp) {
                 this.otps.delete(email);
                 return true;

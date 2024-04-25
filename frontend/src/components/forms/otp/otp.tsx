@@ -3,10 +3,10 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../app/store';
+import { RootState } from '../../../redux/store';
 import { closeOtpModal } from '../../../slices/modalSlice/otp';
 import { IoClose } from "react-icons/io5";
-import style from '../modalStyles/modalStyle';
+import style from '../ModalStyles/modalStyle';
 import { useOtpVerificationMutation, useRegisterMutation, useSendOtpTOMailMutation } from '../../../slices/userSlice';
 import { clearRegister, setCredential } from '../../../slices/authSlice';
 import { toast } from 'react-toastify';
@@ -48,16 +48,20 @@ const OtpModal: React.FC = () => {
     const handleVerifyOtp = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         console.log(registerInfo)
+
         try {
             console.log('entered verify otp')
             const { email }: any = registerInfo;
             const res = await otpVerification({ otp, email }).unwrap();
+
             
             console.log('result in verify otp is :', res)
+
             if (res.success) {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const { username, email, password }: any = registerInfo;
                 const result = await register({ username, email, password }).unwrap();
+
                 if (result) {
                     console.log(result.user)
                     dispatch(setCredential({ ...result.user }));

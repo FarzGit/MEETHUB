@@ -1,4 +1,4 @@
-import { Next, Req, Res } from '../infrastructureLayer/types/expressTypes'
+import { Next, Req, Res } from '../infrastructure/types/expressTypes'
 import { UserUseCase } from '../usecaseLayer/usecase/userUseCase'
 
 export class UserAdapters {

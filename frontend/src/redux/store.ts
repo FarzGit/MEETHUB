@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import signupModal from '../slices/modalSlice/signupModalSlice.ts'
-import SingInModalSlice from '../slices/modalSlice/SingInModalSlice'
-import OtpSlice from '../slices/modalSlice/otp'
+import signupModal from '../slices/modalSlice/signupModalSlice.ts.ts'
+import SingInModalSlice from '../slices/modalSlice/SingInModalSlice.ts'
+import OtpSlice from '../slices/modalSlice/otp.ts'
 import { apiSlice } from '../slices/apiSlice.ts'
 import authSlice from '../slices/authSlice.ts'
 

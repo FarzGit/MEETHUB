@@ -8,12 +8,12 @@ import { useGoogleAuthMutation } from '../../../slices/userSlice.ts';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import { GoogleLogin } from '@react-oauth/google';
-import { RootState } from '../../../app/store';
-import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts';
-import { openSignInModal } from '../../../slices/modalSlice/SingInModalSlice'
-import SignInModal from '../Login/signIn';
-import OtpModal from '../otp/otp';
-import style from '../modalStyles/modalStyle.tsx';
+import { RootState } from '../../../redux/store.ts';
+import { closeSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts.ts';
+import { openSignInModal } from '../../../slices/modalSlice/SingInModalSlice.ts'
+import SignInModal from '../Login/signIn.tsx';
+import OtpModal from '../Otp/otp.tsx';
+import style from '../ModalStyles/modalStyle.tsx';
 import { FormSignUp,MyError } from '../../../validations/validationTypes.ts';
 import { clearRegister, setCredential, setRegister } from '../../../slices/authSlice.ts';
 import { useSendOtpTOMailMutation } from '../../../slices/userSlice.ts';

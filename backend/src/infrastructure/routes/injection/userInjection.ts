@@ -1,5 +1,5 @@
 import JwtPassword from "../../services/jwt";
-import { UserAdapters } from "../../../controllerLayer/userAdapter";
+import { UserAdapters } from "../../../controller/userAdapter";
 import { UserUseCase } from "../../../usecaseLayer/usecase/userUseCase";
 import UserModel from "../../database/model/userModel";
 import { UserRepository } from "../../database/repository/userRepository";

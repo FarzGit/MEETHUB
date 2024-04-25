@@ -1,5 +1,5 @@
 
-import { IUser } from "../../../domainLayer/user";
+import { IUser } from "../../../domain/user";
 
 
 export interface StoreData{

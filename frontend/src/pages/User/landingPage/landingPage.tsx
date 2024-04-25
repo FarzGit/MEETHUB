@@ -1,9 +1,9 @@
-import LandingPageNav from "../../components/navbar/landingPageNav"
+import LandingPageNav from "../../../components/Navbar/landingPageNav.tsx"
 import './landingCSS.css'
-import { openSignupModal } from '../../slices/modalSlice/signupModalSlice.ts'
+import { openSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts.ts'
 import { useDispatch,useSelector } from 'react-redux'
-import MyModal from "../../components/forms/signUp/signUpForm"
-import { RootState } from "../../app/store.ts"
+import MyModal from "../../../components/forms/SignUp/signUpForm.tsx"
+import { RootState } from "../../../redux/store.ts"
 import { useEffect } from "react"
 
 

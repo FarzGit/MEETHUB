@@ -4,7 +4,7 @@ import { MdWorkspacePremium } from "react-icons/md";
 import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../app/store';
+import { RootState } from '../../redux/store';
 import { TbLogout } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../../slices/userSlice';

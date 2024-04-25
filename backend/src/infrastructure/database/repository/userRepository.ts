@@ -1,4 +1,4 @@
-import { IUser } from "../../../domainLayer/user";
+import { IUser } from "../../../domain/user";
 import { IUserRepository } from "../../../usecaseLayer/interface/repository/IuserRepository";
 import { StoreData } from "../../../usecaseLayer/interface/services/Iresponse";
 import UserModel from "../model/userModel";

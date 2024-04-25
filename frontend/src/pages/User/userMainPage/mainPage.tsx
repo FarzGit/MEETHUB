@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react'
-import { RootState } from '../../app/store'
-import HomePageNav from '../../components/navbar/homePageNav'
+import { RootState } from '../../../redux/store'
+import HomePageNav from '../../../components/Navbar/homePageNav'
 import './mainPage.css'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'

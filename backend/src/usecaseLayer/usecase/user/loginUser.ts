@@ -1,4 +1,4 @@
-import { IUser } from "../../../domainLayer/user"
+import { IUser } from "../../../domain/user"
 import { IUserRepository } from "../../interface/repository/IuserRepository"
 import Ijwt from "../../interface/services/Ijwt"
 import { StoreData, IResponse } from "../../interface/services/Iresponse"

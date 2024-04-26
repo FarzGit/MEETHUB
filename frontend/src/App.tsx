@@ -5,6 +5,10 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import PrivateRouter from "./validations/privateRouter";
 import AdminLoginPage from "./pages/Admin/adminLoginPage/adminLoginPage";
+import PremiumPage from "./pages/User/Premium/premium";
+import UsersList from "./pages/Admin/usersList/usersList";
+import AdminNavBar from "./components/Navbar/adminNavBar";
+import MeetInterface from "./pages/meet/meetInterface";
 
 
 function App() {
@@ -21,6 +25,13 @@ function App() {
             <Route path="/home" element={<MainPage />} />
           </Route>
           <Route path="/admin-login" element={<AdminLoginPage/>} />
+          <Route path="/premium" element={<PremiumPage/>} />
+          <Route path="/users-list" element={<UsersList/>} />
+          <Route path="/admin-nav" element={<AdminNavBar/>} />
+          <Route path="/meet" element={<MeetInterface/>} />
+
+          
+
         </Routes>
       </BrowserRouter>
     </>

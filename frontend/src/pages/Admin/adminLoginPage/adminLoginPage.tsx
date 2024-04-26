@@ -30,7 +30,7 @@ const AdminLoginPage = () => {
                         </div>
                     </form>
                 </div>
-                <div className="flex  items-center w-[50%]">
+                <div className="flex  items-center w-[50%] max-lg:hidden">
                     <img src="/src/assets/iamges/admin_login.webp" alt="admin-login-img" />
                 </div>
             </div>

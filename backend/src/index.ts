@@ -1,6 +1,6 @@
-import { app } from "./infrastructureLayer/config/app"; // assuming app.ts is in the same directory
+import { app } from "./infrastructure/config/app"; // assuming app.ts is in the same directory
 import dotenv from 'dotenv';
-import connectDb from "./infrastructureLayer/config/db";
+import connectDb from "./infrastructure/config/db";
 
 dotenv.config();
 

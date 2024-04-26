@@ -1,0 +1,75 @@
+import HomePageNav from "../../../components/Navbar/homePageNav"
+import './premium.css'
+
+
+const PremiumPage = () => {
+
+
+    return (
+        <>
+            <HomePageNav />
+            <div className="landingMainDiv pl-[75px] pr-[75px]  ">
+                <div className=" flex justify-between items-center cardDiv max-lg:flex-col min-sm:hidden">
+                    <div className=" card flex flex-col items-center  w-[400px] max-sm:w-[100%] leading-[23px]  p-9 ml-[80px] max-2xl:mr-[60px] max-lg:w-[100%]  ">
+                        <div>
+                            <img src="/src/assets/iamges/VIP-badge.png" alt="" />
+                        </div>
+                        <div className="">
+                            <div className="py-3 flex">
+                                <span className="pr-3">
+                                    &bull;
+                                </span>
+                                <p>
+                                    Get A Verified Badge with name
+                                </p>
+                            </div>
+                            <div className="flex py-3">
+                                <span className="pr-3">
+                                    &bull;
+                                </span>
+                                <p>
+                                    Easily capture your interview  with our video recording feature.
+                                </p>
+                            </div>
+                            <div className="flex py-3">
+                                <span className="pr-3">
+                                    &bull;
+                                </span>
+                                <p >
+                                    Enjoy the freedom of limitless video storage in the cloud
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <button className=" btn mt-6 " >Purchase</button>
+                        </div>
+                    </div>
+                    <div className=" secondDivContents flex flex-col justify-start w-[50%] gap-5 mr-[80px] h-[500px] max-lg:w-[100%] max-lg:pl-[60px]">
+                        <div className="flex justify-end">
+                            <button className="backButton border p-2 rounded-lg w-[100px] font-bold max-lg:hidden">Back</button>
+                        </div>
+                        <div className=" pt-6 max-sm:w-0">
+                            <p className="text-6xl">
+                                Be a <span className="font-bold">Premium</span> member
+                            </p>
+                            <p className="text-6xl">
+                                <span className="font-bold text-[#d4922e]" >$15</span> only, Upgrade now!
+                            </p>
+                        </div>
+                        <div className="pt-10">
+                            <p className=" text-gray-500 text-lg">
+                                Upgrade to our Premium Membership and gain exclusive access to advanced
+                                features that elevate your interviewing experience.
+                                Enjoy unlimited storage for your video recordings in the cloud,
+                                priority scheduling options, personalized support,
+                                and enhanced analytics to track your progress.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default PremiumPage

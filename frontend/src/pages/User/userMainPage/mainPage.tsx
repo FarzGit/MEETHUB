@@ -3,14 +3,17 @@ import { useEffect } from 'react'
 import { RootState } from '../../../redux/store'
 import HomePageNav from '../../../components/Navbar/homePageNav'
 import './mainPage.css'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { openInterviewModal } from '../../../slices/modalSlice/createInterviewSlice'
+import CreateInterviewModal from '../../../components/forms/createInterview/createInterview'
 
 
 const MainPage = () => {
 
     const {userInfo} = useSelector((state:RootState)=>state.authSlice)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(()=>{
 
@@ -19,6 +22,13 @@ const MainPage = () => {
         }
 
     },[])
+
+
+
+    const handleButton = ()=>{
+        console.log("entered hjhjhh")
+        dispatch(openInterviewModal())
+    }
 
 
     return (
@@ -36,7 +46,7 @@ const MainPage = () => {
                             />
                             <button className="bg-blue-500 rounded-md h-[50px] w-[110px] mr-5  text-white">Join</button>
                         </div>
-                        <button className="bg-blue-500 rounded-md h-[50px] mr-5 mt-4  text-white">Create an Interview</button>
+                        <button onClick={handleButton} className="bg-blue-500 rounded-md h-[50px] mr-5 mt-4  text-white">Create an Interview</button>
 
                     </div>
                     <div>
@@ -61,7 +71,7 @@ const MainPage = () => {
 
                 </div>
                 
-
+<CreateInterviewModal/>
             </div>
         </>
     )

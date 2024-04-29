@@ -2,7 +2,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import style from '../ModalStyles/modalStyle.tsx';
-import EmailVerificatioin from '../ForgotPassword/emailVerification.tsx';
+// import EmailVerification from '../ForgotPassword/emailVerification.tsx';
 import { useSelector,useDispatch } from 'react-redux';
 import { RootState } from '../../../redux/store.ts';
 import { closechangePasswordModal } from '../../../slices/modalSlice/changePassword.ts';
@@ -108,7 +108,7 @@ const PasswordChange = ()=>{
                     </Typography>
                 </Box>
             </Modal>
-            <EmailVerificatioin/>
+            {/* <EmailVerification/> */}
         </div>
         </>
     )

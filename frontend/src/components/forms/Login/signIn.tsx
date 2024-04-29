@@ -17,7 +17,7 @@ import { signInValidation } from '../../../validations/yupValidation.tsx';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import { openVerifyEmailModal } from '../../../slices/modalSlice/verifyEmail.ts';
-import EmailVerificatioin from '../ForgotPassword/emailVerification.tsx';
+import EmailVerifications from '../ForgotPassword/EmailVerification.tsx';
 
 
 
@@ -189,7 +189,7 @@ const SignInModal: React.FC = () => {
                     </Typography>
                 </Box>
             </Modal>
-            <EmailVerificatioin/>
+            <EmailVerifications/>
         </div>
     );
 };

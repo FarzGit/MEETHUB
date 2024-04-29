@@ -18,7 +18,7 @@ import { MyError } from '../../../validations/validationTypes';
 
 
 
-const EmailVerificatioin = () => {
+const EmailVerifications = () => {
 
     const openModal = useSelector((state: RootState) => state.verifyEmailSlice.value)
     const dispatch = useDispatch()
@@ -111,5 +111,5 @@ const {values,handleSubmit,handleChange}=useFormik({
     )
 }
 
-export default EmailVerificatioin
+export default EmailVerifications
 

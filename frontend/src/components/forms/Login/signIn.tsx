@@ -16,6 +16,12 @@ import { toast } from 'react-toastify';
 import { signInValidation } from '../../../validations/yupValidation.tsx';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
+import { openVerifyEmailModal } from '../../../slices/modalSlice/verifyEmail.ts';
+import EmailVerificatioin from '../ForgotPassword/emailVerification.tsx';
+
+
+
+
 
 
 
@@ -76,6 +82,12 @@ const SignInModal: React.FC = () => {
       }
 
 
+      const handleForgottenPassword = ()=>{
+        dispatch(closeSignInModal())
+        dispatch(openVerifyEmailModal())
+      }
+
+
     return (
         <div>
             <Modal
@@ -114,7 +126,7 @@ const SignInModal: React.FC = () => {
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                 />
                                 <div className='flex justify-end text-blue-400 text-[12px] cursor-pointer'>
-                                    <span>forgotten password</span>
+                                    <span onClick={handleForgottenPassword}>forgotten password</span>
                                 </div>
                                 <div className="flex flex-col items-center pt-4 justify-center gap-5">
                                     <button type='submit' className="bg-blue-500 rounded-md h-[40px] w-[110px]   text-white">SignIn</button>
@@ -177,6 +189,7 @@ const SignInModal: React.FC = () => {
                     </Typography>
                 </Box>
             </Modal>
+            <EmailVerificatioin/>
         </div>
     );
 };

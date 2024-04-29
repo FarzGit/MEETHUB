@@ -49,9 +49,8 @@ const MyModal: React.FC = () => {
         initialValues: initialValues,
         validationSchema: signUpValidation,
 
-        onSubmit: async (values) => {
+        onSubmit: async (values) =>{
             dispatch(setRegister({ ...values }));
-
             try {
                 console.log(values)
                 const { username, email } = values;

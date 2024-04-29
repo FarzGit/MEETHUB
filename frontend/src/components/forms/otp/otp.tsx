@@ -7,13 +7,14 @@ import { RootState } from '../../../redux/store';
 import { closeOtpModal } from '../../../slices/modalSlice/otp';
 import { IoClose } from "react-icons/io5";
 import style from '../ModalStyles/modalStyle';
-import { useOtpVerificationMutation, useRegisterMutation, useSendOtpTOMailMutation } from '../../../slices/userSlice';
+import { useOtpVerificationMutation, useRegisterMutation, useSendOtpTOMailMutation,useSendForgetEmailOtpMutation } from '../../../slices/userSlice';
 import { clearRegister, setCredential } from '../../../slices/authSlice';
 import { toast } from 'react-toastify';
 // import { useNavigate } from 'react-router-dom';
 import { openSignInModal } from '../../../slices/modalSlice/SingInModalSlice';
 import { MyError } from '../../../validations/validationTypes';
-
+import { openchangePasswordModal } from '../../../slices/modalSlice/changePassword';
+import PasswordChange from '../ForgotPassword/passwordChange';
 
 
 const OtpModal: React.FC = () => {
@@ -23,7 +24,10 @@ const OtpModal: React.FC = () => {
     const [otpVerification] = useOtpVerificationMutation();
     const [register] = useRegisterMutation();
     const [sendOtpToEmail] = useSendOtpTOMailMutation();
+    const [sendForgetEmailOtp] = useSendForgetEmailOtpMutation();
     const { registerInfo } = useSelector((state: RootState) => state.authSlice);
+    const { forgotEmailInfo } = useSelector((state: RootState) => state.authSlice);
+
     const [timer, setTimer] = useState(60);
     const [showResendButton, setShowResendButton] = useState(false);
 
@@ -50,7 +54,41 @@ const OtpModal: React.FC = () => {
         console.log(registerInfo)
 
         try {
-            console.log('entered verify otp')
+
+            if(!registerInfo){
+                console.log('entered verify otp')
+            const { email }: any = forgotEmailInfo;
+            const res = await otpVerification({ otp, email }).unwrap();
+
+            
+            console.log('result in verify otp is :', res)
+
+            if(res.success){
+
+                dispatch(closeOtpModal())
+                dispatch(openchangePasswordModal())
+
+
+            }
+
+            // if (res.success) {
+            //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            //     const { username, email, password }: any = registerInfo;
+            //     const result = await register({ username, email, password }).unwrap();
+
+            //     if (result) {
+            //         console.log(result.user)
+            //         dispatch(setCredential({ ...result.user }));
+            //         dispatch(closeOtpModal());
+            //         dispatch(clearRegister());
+            //         dispatch(openSignInModal())
+            //         toast.success('Successfully Registered');
+            //     }
+            // }
+
+            }else{
+
+                console.log('entered verify otp')
             const { email }: any = registerInfo;
             const res = await otpVerification({ otp, email }).unwrap();
 
@@ -71,6 +109,9 @@ const OtpModal: React.FC = () => {
                     toast.success('Successfully Registered');
                 }
             }
+
+            }
+            
         } catch (err) {
             console.error(err);
             toast.error((err as MyError)?.data?.message || (err as MyError)?.error);
@@ -84,13 +125,28 @@ const OtpModal: React.FC = () => {
         setTimer(60);
         setShowResendButton(false);
         try {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+            if(!registerInfo){
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const { email}: any = forgotEmailInfo;
+            const username = email.split("@")[0];
+            console.log("otp send email", email, username)
+            const res = await sendForgetEmailOtp({ username, email }).unwrap();
+            if (res) {
+                toast.success(res.message);
+            }
+
+            }else{
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const { email, username }: any = registerInfo;
             console.log("otp send email", email, username)
             const res = await sendOtpToEmail({ username, email }).unwrap();
             if (res) {
                 toast.success(res.message);
             }
+
+            }
+           
         } catch (error) {
             console.error(error);
             toast.error('Failed to resend OTP');
@@ -98,9 +154,10 @@ const OtpModal: React.FC = () => {
     };
 
     return (
+        <>
         <Modal
             open={openModal}
-            onClose={handleClose}
+            // onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -138,6 +195,9 @@ const OtpModal: React.FC = () => {
                 </Typography>
             </Box>
         </Modal>
+        <PasswordChange/>
+        </>
+        
     );
 };
 

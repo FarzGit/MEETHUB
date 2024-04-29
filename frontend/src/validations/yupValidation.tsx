@@ -35,3 +35,20 @@ export const signInValidation = Yup.object({
         .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.com$/, "Enter a valid email")
         .required("Please enter email"),
 });
+
+
+// validation for user new password
+export const newPasswordValidation = Yup.object({
+
+    password: Yup.string()
+        .min(6, "Password must be at least 6 characters")
+        .matches(/^[^\s]+$/, "Password cannot contain spaces")
+        .matches(
+            /[!@#$%^&*(),.?":{}|<>]/,
+            "Password must contain at least one special character"
+        )
+        .required("Please enter password"),
+    confirmpassword: Yup.string()
+        .oneOf([Yup.ref("password")], "Password not matched")
+        .required("Please enter confirmpassword"),
+});

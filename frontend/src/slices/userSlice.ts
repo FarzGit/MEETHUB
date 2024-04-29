@@ -45,7 +45,22 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 url:`${BASE_URL}/logout`,
                 method:'POST'
             })
-        })
+        }),
+        forgotPassword:builder.mutation({
+            query:(data)=>({
+                url:`${BASE_URL}/forgot-password`,
+                method:'POST',
+                body:data
+            })
+        }),
+        sendForgetEmailOtp:builder.mutation({
+            query:(data)=>({
+                url:`${BASE_URL}/send-Forget-Pass-Otp`,
+                method:'POST',
+                body:data
+            })
+        }),
+
 
     })
 })
@@ -55,5 +70,7 @@ export const {useRegisterMutation,
             useOtpVerificationMutation,
             useUserLoginMutation,
             useGoogleAuthMutation,
-            useLogoutMutation
+            useLogoutMutation,
+            useForgotPasswordMutation,
+            useSendForgetEmailOtpMutation
 } = userApiSlice

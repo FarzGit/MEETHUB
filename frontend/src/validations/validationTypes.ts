@@ -18,3 +18,12 @@ export interface MyError {
     };
     error?: string;
 }
+
+export interface VerifyEmail{
+    email:string;
+}
+
+export interface changePassword{
+    password:string;
+    confirmpassword:string;
+}

@@ -7,6 +7,8 @@ import { verifyEmail } from "./user/sendMail";
 import { emailVerification } from "./user/emailVerification";
 import { loginUser } from "./user/loginUser";
 import { googleAuth } from "./user/googleAuth";
+import { forgotPassword } from "./user/forgotPassword";
+import { sendForgetPassOtp } from "./user/sendForgetPassOtp";
 
 
 export class UserUseCase {
@@ -84,11 +86,25 @@ export class UserUseCase {
     }
 
     async emailVerification({ otp, email }: { otp: string; email: string }) {
-
         return emailVerification(this.nodemailer, otp, email)
-
     }
 
+    async forgotPassword({email,password}:{email:string,password:string}){
+        return forgotPassword(
+            this.userRepository,
+            this.bycrypt,
+            this.jwt,
+            email,
+            password
+        )
+    }
+
+    
+    async sendForgetPassOtp({ email, username }: { email: string; username: string }) {
+        return sendForgetPassOtp(this.userRepository, this.nodemailer, email, username)
+    }
+
+    
 
 
 

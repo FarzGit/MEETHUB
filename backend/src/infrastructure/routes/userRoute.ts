@@ -37,6 +37,14 @@ router.post('/logout',(req:Request,res:Response,next:NextFunction)=>{
 
 })
 
+router.post('/forgot-password',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.forgotPassword(req,res,next)
+})
+
+router.post('/send-Forget-Pass-Otp',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.sendforgetPassOtp(req,res,next)
+})
+
 
 
 

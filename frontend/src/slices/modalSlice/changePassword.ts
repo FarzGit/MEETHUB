@@ -8,15 +8,15 @@ const initialState: ModalState = {
     value: false,
 }
 
-export const verifyEmailSlice = createSlice({
-    name: 'verifyEmailModal',
+export const changePasswordSlice = createSlice({
+    name: 'changePasswordModal',
     initialState,
     reducers: {
-        openVerifyEmailModal: (state) => {
+        openchangePasswordModal: (state) => {
             console.log(' reducer entered')
             state.value = true
         },
-        closeVerifyEmailModal: (state) => {
+        closechangePasswordModal: (state) => {
             
             state.value = false
         },
@@ -25,6 +25,6 @@ export const verifyEmailSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { openVerifyEmailModal, closeVerifyEmailModal } = verifyEmailSlice.actions
+export const { openchangePasswordModal, closechangePasswordModal } = changePasswordSlice.actions
 
-export default verifyEmailSlice.reducer
+export default changePasswordSlice.reducer

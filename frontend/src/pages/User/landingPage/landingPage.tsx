@@ -1,19 +1,14 @@
 import LandingPageNav from "../../../components/Navbar/landingPageNav.tsx"
 import './landingCSS.css'
 import { openSignupModal } from '../../../slices/modalSlice/signupModalSlice.ts.ts'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import MyModal from "../../../components/forms/SignUp/signUpForm.tsx"
-import { RootState } from "../../../redux/store.ts"
-import { useEffect } from "react"
+
 
 
 const LandingPage = () => {
 
-    const {registerInfo} = useSelector((state:RootState)=>state.authSlice)
-
-    useEffect(()=>{
-        console.log("the registerInfo is",registerInfo)
-    })
+    
 
 
     const dispatch = useDispatch()

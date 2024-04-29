@@ -5,6 +5,8 @@ import OtpSlice from '../slices/modalSlice/otp.ts'
 import { apiSlice } from '../slices/apiSlice.ts'
 import authSlice from '../slices/authSlice.ts'
 import createInterviewSlice from '../slices/modalSlice/createInterviewSlice.ts'
+import verifyEmailSlice  from '../slices/modalSlice/verifyEmail.ts'
+import changePasswordSlice from '../slices/modalSlice/changePassword.ts'
 
 
 const Store = configureStore({
@@ -14,7 +16,9 @@ const Store = configureStore({
         SingInModalSlice: SingInModalSlice,
         OtpSlice: OtpSlice,
         authSlice: authSlice,
-        createInterviewSlice:createInterviewSlice
+        createInterviewSlice:createInterviewSlice,
+        verifyEmailSlice:verifyEmailSlice,
+        changePasswordSlice:changePasswordSlice
 
 
 

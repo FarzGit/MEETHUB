@@ -60,6 +60,20 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 body:data
             })
         }),
+        payment:builder.mutation({
+            query:(data)=>({
+                url:`${BASE_URL}/payment`,
+                method:'POST',
+                body:data
+            })
+        }),
+        confirmPayment:builder.mutation({
+            query:(data)=>({
+                url:`${BASE_URL}/payment`,
+                method:'POST',
+                body:data
+            })
+        }),
 
 
     })
@@ -72,5 +86,7 @@ export const {useRegisterMutation,
             useGoogleAuthMutation,
             useLogoutMutation,
             useForgotPasswordMutation,
-            useSendForgetEmailOtpMutation
+            useSendForgetEmailOtpMutation,
+            usePaymentMutation,
+            useConfirmPaymentMutation
 } = userApiSlice

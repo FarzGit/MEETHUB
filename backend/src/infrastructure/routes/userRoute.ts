@@ -2,6 +2,7 @@
 import express,{NextFunction,Request,Response} from 'express'
 import { userAdapter } from './injection/userInjection'
 import { Req } from '../types/expressTypes'
+import stripe from 'stripe'
 
 
 const router = express.Router()
@@ -45,9 +46,14 @@ router.post('/send-Forget-Pass-Otp',(req:Request,res:Response,next:NextFunction)
     userAdapter.sendforgetPassOtp(req,res,next)
 })
 
+router.post('/payment',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.payment(req,res,next)
+})
 
 
-
+router.post('/webhook',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.webhook(req,res,next)
+})
 
 
 

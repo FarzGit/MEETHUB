@@ -9,6 +9,8 @@ export const createUser = async(
 ): Promise<StoreData> =>{
     try {
 
+        console.log('enterrreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
+
         const user = await userModel.create(newUser)
         await user.save()
         const responseData:StoreData={

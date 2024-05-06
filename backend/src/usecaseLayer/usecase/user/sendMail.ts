@@ -1,4 +1,3 @@
-// import ErrorResponse from "../../handler/errorResponse";
 import ErrorResponse from "../../handler/errorResponse";
 import { IUserRepository } from "../../interface/repository/IuserRepository";
 import INodemailer from "../../interface/services/Inodemailer";
@@ -20,7 +19,7 @@ export const verifyEmail = async (
 
         const user = await userRepository.findUser(email)
 
-        if(!user){
+        if (!user) {
             const verify = await nodemailer.sendEmailVerification(email, username)
 
             return {
@@ -33,9 +32,10 @@ export const verifyEmail = async (
         throw ErrorResponse.badRequest('The email already exist')
 
 
-        
+
 
     } catch (error) {
+        console.log(error)
         throw error
     }
 

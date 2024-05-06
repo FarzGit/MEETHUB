@@ -1,14 +1,9 @@
 
 import ErrorResponse from "../../handler/errorResponse";
-import Stripe from "stripe";
-import { IUserRepository } from "../../interface/repository/IuserRepository";
-import { IResponse,IcreatePayment } from "../../interface/services/Iresponse";
-import StripeService from "../../../infrastructure/services/stripe";
+import { IResponse } from "../../interface/services/Iresponse";
 import IStripe from "../../interface/services/IStripe";
 
 export const createPayment = async(
-    // userRepository:IUserRepository,
-    // paymentData:IcreatePayment,
     stripe:IStripe,
     amount:number,
     email:string,
@@ -18,7 +13,6 @@ export const createPayment = async(
     try{
             const res = await stripe.createPaymentIntent(amount,email,userId)
             
-            // console.log('\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\',res)
             if(res){
                 
                 return {
@@ -30,6 +24,8 @@ export const createPayment = async(
             }
             throw ErrorResponse.badRequest('Failed to create payment intent');
     }catch(error){
+        console.log(error)
+
         throw error
     }
 }

@@ -1,14 +1,11 @@
 
-import { IUserRepository } from "../../interface/repository/IuserRepository"
-import StripeService from "../../../infrastructure/services/stripe"
 import IStripe from "../../interface/services/IStripe"
 
 
 export const confirmPayment = async(
-    // paymentMethodId:string,
     stripe:IStripe,
     req:any
-):Promise<Boolean|null>=>{
+):Promise<boolean|null>=>{
     try{
 
         // console.log('the request status from usecase confirmPayment',req)
@@ -27,6 +24,8 @@ export const confirmPayment = async(
 
 
     }catch(err){
+        console.log(err)
+
         throw err
     }
 

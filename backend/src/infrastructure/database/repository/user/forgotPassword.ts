@@ -28,6 +28,8 @@ export const forgotPassword = async(
         throw new Error('Internal server error')
         
     } catch (error) {
+        console.log(error)
+
         throw error
         
     }

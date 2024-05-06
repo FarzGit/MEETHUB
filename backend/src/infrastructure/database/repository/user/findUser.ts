@@ -13,6 +13,8 @@ export const findUser = async(
         return existingUser
         
     } catch (error) {
+        console.log(error)
+
         throw error
         
     }

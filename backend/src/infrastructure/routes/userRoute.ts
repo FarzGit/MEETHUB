@@ -1,8 +1,6 @@
 
 import express,{NextFunction,Request,Response} from 'express'
 import { userAdapter } from './injection/userInjection'
-import { Req } from '../types/expressTypes'
-import stripe from 'stripe'
 
 
 const router = express.Router()

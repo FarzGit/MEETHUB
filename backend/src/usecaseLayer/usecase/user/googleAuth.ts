@@ -57,6 +57,8 @@ export const googleAuth = async (
 
         throw ErrorResponse.internalError('Server error')
     } catch (err) {
+        console.log(err)
+
         throw err;
     }
 };

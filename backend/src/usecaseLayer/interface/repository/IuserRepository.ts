@@ -1,7 +1,6 @@
 
-import { IPayment } from "../../../domain/payment";
 import { IUser } from "../../../domain/user";
-import { IforgotPassword, StoreData,IcreatePayment,paymentDatas } from "../services/Iresponse";
+import { IforgotPassword, StoreData,paymentDatas } from "../services/Iresponse";
 
 export interface IUserRepository{
     createUser(newUser:IUser):Promise<StoreData>

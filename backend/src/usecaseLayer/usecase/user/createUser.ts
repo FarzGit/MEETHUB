@@ -2,8 +2,6 @@ import { IUserRepository } from "../../interface/repository/IuserRepository";
 import Ijwt from "../../interface/services/Ijwt";
 import { IResponse } from "../../interface/services/Iresponse";
 import IHashPassword from "../../interface/services/IHashPassword";
-import ErrorResponse from "../../handler/errorResponse";
-
 
 export const createUser = async (
     userRepository: IUserRepository,
@@ -43,6 +41,8 @@ export const createUser = async (
 
 
     } catch (error) {
+        console.log(error)
+
         throw error
     }
 }

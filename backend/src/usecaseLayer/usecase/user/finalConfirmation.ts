@@ -1,8 +1,7 @@
 
 
     import { IUserRepository } from "../../interface/repository/IuserRepository"
-    import StripeService from "../../../infrastructure/services/stripe"
-    import IStripe from "../../interface/services/IStripe"
+  
     
     
     export const finalConfirmation = async(
@@ -24,6 +23,8 @@
     
     
         }catch(err){
+            console.log(err)
+
             throw err
         }
     

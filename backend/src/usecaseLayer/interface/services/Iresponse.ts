@@ -1,5 +1,4 @@
 
-import { IUser } from "../../../domain/user";
 
 
 export interface StoreData{

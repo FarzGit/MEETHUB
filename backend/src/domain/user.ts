@@ -5,7 +5,7 @@ export interface IUser{
     // confirmPassword:string;
     email:string;
     profileImage?:string;
-    isBlocked?:Boolean;
-    isVerified?:Boolean;
-    isPremium?:Boolean
+    isBlocked?:boolean;
+    isVerified?:boolean;
+    isPremium?:boolean
 }

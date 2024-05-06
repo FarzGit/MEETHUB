@@ -1,5 +1,4 @@
 
-import Stripe from "stripe";
 import { IResponse } from "./Iresponse";
 
 interface IStripe {

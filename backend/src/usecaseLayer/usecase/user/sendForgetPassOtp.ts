@@ -2,7 +2,6 @@
 import { IUserRepository } from "../../interface/repository/IuserRepository";
 import INodemailer from "../../interface/services/Inodemailer";
 import {IResponse } from "../../interface/services/Iresponse";
-import { IUser } from "../../../domain/user";
 import ErrorResponse from "../../handler/errorResponse";
 
 
@@ -37,7 +36,7 @@ export const sendForgetPassOtp =  async(
 
 
     }catch(error){
-        // console.log(error)
+        console.log(error)
         throw error
     }
 }

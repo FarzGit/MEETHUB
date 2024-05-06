@@ -27,11 +27,10 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route  element={<PrivateRouter/>}>
             <Route path="/home" element={<MainPage />} />
+            <Route path="/premium" element={<PremiumPage />} />
           </Route>
           <Route path="/admin-login" element={<AdminLoginPage/>} />
          
-          {/* <Route path="/premium" element={<Elements stripe={stripePromise}><PremiumPage /></Elements>} /> */}
-          <Route path="/premium" element={<PremiumPage />} />
 
           <Route path="/users-list" element={<UsersList/>} />
           <Route path="/admin-nav" element={<AdminNavBar/>} />

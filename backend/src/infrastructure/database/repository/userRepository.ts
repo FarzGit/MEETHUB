@@ -1,6 +1,6 @@
 import { IUser } from "../../../domain/user";
 import { IUserRepository } from "../../../usecaseLayer/interface/repository/IuserRepository";
-import { StoreData, IforgotPassword, IcreatePayment, paymentDatas } from "../../../usecaseLayer/interface/services/Iresponse";
+import { StoreData, IforgotPassword , paymentDatas } from "../../../usecaseLayer/interface/services/Iresponse";
 import UserModel from "../model/userModel";
 import { paymentData } from "./payment/createPayment";
 import { createUser } from "./user/createUser";
@@ -8,7 +8,6 @@ import { findUser } from "./user/findUser";
 import { forgotPassword } from "./user/forgotPassword";
 import { payment } from "./user/payment";
 import PaymentModel from "../model/paymentModel";
-import { IPayment } from "../../../domain/payment";
 
 
 // This class for exporting all the single data base operation together

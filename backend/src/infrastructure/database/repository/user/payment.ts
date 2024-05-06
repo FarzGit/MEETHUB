@@ -1,5 +1,5 @@
 
-import { StoreData,IcreatePayment } from "../../../../usecaseLayer/interface/services/Iresponse";
+import { StoreData } from "../../../../usecaseLayer/interface/services/Iresponse";
 import UserModel from "../../model/userModel";
 
 

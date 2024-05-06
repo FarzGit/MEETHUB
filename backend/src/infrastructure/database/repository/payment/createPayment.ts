@@ -1,9 +1,6 @@
 
-import { StoreData,IcreatePayment,paymentDatas} from "../../../../usecaseLayer/interface/services/Iresponse";
-import UserModel from "../../model/userModel";
+import {paymentDatas} from "../../../../usecaseLayer/interface/services/Iresponse";
 import PaymentModel from "../../model/paymentModel";
-import { IPayment } from "../../../../domain/payment";
-
 
 
 
@@ -35,6 +32,8 @@ export const paymentData = async (
 
 
     } catch (error) {
+        console.log(error)
+
         throw error
         
     }

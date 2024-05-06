@@ -27,6 +27,8 @@ export const emailVerification = async (
         }
 
     } catch (error) {
+        console.log(error)
+
         throw error
 
     }

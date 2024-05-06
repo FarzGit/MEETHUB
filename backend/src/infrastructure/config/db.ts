@@ -5,11 +5,11 @@ const DB_STRING:string = process.env.MONGO_DB || ""
 const connectDb = async()=>{
     try {
         await mongoose.connect(DB_STRING)
-        .then((data:any)=>{
+        .then((data)=>{
             console.log(`Database connected ${data.connection.host}`)
         })
         
-    } catch (error:any) {
+    } catch (error) {
         console.log(error)
         setTimeout(connectDb,5000)
         

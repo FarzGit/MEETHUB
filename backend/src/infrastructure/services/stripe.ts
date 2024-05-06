@@ -3,7 +3,7 @@ const stripe = new Stripe('sk_test_51PB8mpSEVuL1FI1rpi7YKIS4RSHjq4EYFVnHlTsottQH
     apiVersion: "2024-04-10"
 });
 import IStripe from "../../usecaseLayer/interface/services/IStripe";
-import { IResponse, StoreData } from "../../usecaseLayer/interface/services/Iresponse";
+import { IResponse} from "../../usecaseLayer/interface/services/Iresponse";
 
 
 class StripeService implements IStripe {
@@ -74,7 +74,7 @@ class StripeService implements IStripe {
     });
 
     let event
-    event = stripe.webhooks.constructEvent(
+       event = stripe.webhooks.constructEvent(
       payloadString,
       header,
       endpointSecret

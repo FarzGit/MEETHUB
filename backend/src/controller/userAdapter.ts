@@ -226,7 +226,6 @@ export class UserAdapters {
     async webhook(req: Req, res: Res, next: Next) {
         try {
             let transactionId;
-            let receiptUrl;
 
             // Parse the incoming webhook event
             const event = req.body;
@@ -245,13 +244,13 @@ export class UserAdapters {
                     const userId = metadata.userId;
                     const amount = metadata.amount;
 
-                    console.log('the session is :', session)
+                    // console.log('the session is :', session)
 
 
 
                     transactionId = event.data.object.payment_intent;
 
-                    console.log('The transaction id is :', transactionId);
+                    // console.log('The transaction id is :', transactionId);
 
                     await this.userusecases.finalConfirmation({ email, amount, transactionId, userId })
 
@@ -264,12 +263,17 @@ export class UserAdapters {
                     console.log(`Unhandled event type: ${event.type}`);
             }
 
+
+            
+
             // Respond with a success message
             res.status(200).json({ received: true });
         } catch (error) {
             next(error);
         }
     }
+
+    
 
 }
 

@@ -1,8 +1,47 @@
 import HomePageNav from "../../../components/Navbar/homePageNav"
 import './premium.css'
+import { loadStripe,Stripe  } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
+import { usePaymentMutation } from "../../../slices/userSlice";
+import { RootState } from "../../../redux/store";
+import { Link } from "react-router-dom";
+const public_stripe_key = import.meta.env.VITE_PUBLIC_STRIPE_KEY
+// const stripePromise = loadStripe('pk_test_51PB8mpSEVuL1FI1r7jbat474TSCFRPHyJBxZJkbNmanTC7QwN0bapTeuqBuratB79rcP6CkIMykmkkeEClILnPGj0071Q53iFl');
 
 
 const PremiumPage = () => {
+
+    // const dispatch = useDispatch()
+    const {userInfo} = useSelector((state:RootState)=>state.authSlice)
+    const [payment] = usePaymentMutation()
+
+
+    
+
+
+    const handlePurchase = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const stripePromise: Stripe | null  = await loadStripe(public_stripe_key);
+
+        const userId = userInfo?._id
+        const email = userInfo?.email
+
+        const amount = 2000
+        const res = await payment({ amount,email,userId }).unwrap()
+        const session = res
+        console.log(res)
+
+        if (stripePromise) {
+            stripePromise.redirectToCheckout({
+                sessionId: session.data,
+            });
+        } else {
+            console.error('Failed to initialize Stripe');
+            // Handle the error appropriately
+        }
+
+    }
 
 
     return (
@@ -40,13 +79,16 @@ const PremiumPage = () => {
                                 </p>
                             </div>
                         </div>
-                        <div>
-                            <button className=" btn mt-6 " >Purchase</button>
-                        </div>
+                        <form onSubmit={handlePurchase} >
+                            {/* <CardElement /> */}
+                            <div>
+                                <button type="submit" className=" btn mt-6 " >Purchase</button>
+                            </div>
+                        </form>
                     </div>
                     <div className=" secondDivContents flex flex-col justify-start w-[50%] gap-5 mr-[80px] h-[500px] max-lg:w-[100%] max-lg:pl-[60px]">
                         <div className="flex justify-end">
-                            <button className="backButton border p-2 rounded-lg w-[100px] font-bold max-lg:hidden">Back</button>
+                            <Link to='/home' className="backButton border p-2 rounded-lg w-[100px] font-bold max-lg:hidden">Back</Link>
                         </div>
                         <div className=" pt-6 max-sm:w-0">
                             <p className="text-6xl">

@@ -9,6 +9,10 @@ import PremiumPage from "./pages/User/Premium/premium";
 import UsersList from "./pages/Admin/usersList/usersList";
 import AdminNavBar from "./components/Navbar/adminNavBar";
 import MeetInterface from "./pages/meet/meetInterface";
+// import { Elements} from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
+// const stripePromise = loadStripe('pk_test_51PB8mpSEVuL1FI1r7jbat474TSCFRPHyJBxZJkbNmanTC7QwN0bapTeuqBuratB79rcP6CkIMykmkkeEClILnPGj0071Q53iFl');
+
 
 
 function App() {
@@ -25,7 +29,10 @@ function App() {
             <Route path="/home" element={<MainPage />} />
           </Route>
           <Route path="/admin-login" element={<AdminLoginPage/>} />
-          <Route path="/premium" element={<PremiumPage/>} />
+         
+          {/* <Route path="/premium" element={<Elements stripe={stripePromise}><PremiumPage /></Elements>} /> */}
+          <Route path="/premium" element={<PremiumPage />} />
+
           <Route path="/users-list" element={<UsersList/>} />
           <Route path="/admin-nav" element={<AdminNavBar/>} />
           <Route path="/meet" element={<MeetInterface/>} />

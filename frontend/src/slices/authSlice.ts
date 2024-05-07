@@ -8,17 +8,26 @@ export interface UserInfo {
     password?: string;
 }
 
+export interface AdminInfo{
+    _id?:string;
+    email:string;
+}
+
 
 interface InitialState {
     userInfo: UserInfo | null;
     registerInfo: UserInfo | null;
     forgotEmailInfo:UserInfo | null;
+    adminInfo:AdminInfo|null
 }
 
 
 const userInfoFromLocalStorage = localStorage.getItem("userInfo");
 const registerInfoFromLocalStorage = localStorage.getItem("registerInfo");
 const forgotEmailInfoFromLocalStorage = localStorage.getItem("forgotEmailInfo")
+const adminInfoFromLocalStorage = localStorage.getItem("adminInfo")
+
+
 
 const initialState: InitialState = {
     userInfo: userInfoFromLocalStorage
@@ -31,6 +40,11 @@ const initialState: InitialState = {
 
     forgotEmailInfo: forgotEmailInfoFromLocalStorage
     ? JSON.parse(forgotEmailInfoFromLocalStorage)
+    : null,
+
+
+    adminInfo:adminInfoFromLocalStorage
+    ?JSON.parse(adminInfoFromLocalStorage)
     : null
 
 
@@ -67,11 +81,15 @@ const authSlice = createSlice({
         clearForgotRegister:(state)=>{
             state.forgotEmailInfo = null;
             localStorage.removeItem("forgotEmailInfo");
-        }
+        },
+        setAdminCredential: (state, action) => {
+            state.adminInfo = action.payload;
+            localStorage.setItem("adminInfo", JSON.stringify(action.payload));
+        },
     }
 })
 
 
-export const { setCredential, userLogOut, setRegister, clearRegister,setForgotRegister,clearForgotRegister } = authSlice.actions
+export const { setCredential, userLogOut, setRegister, clearRegister,setForgotRegister,clearForgotRegister,setAdminCredential } = authSlice.actions
 
 export default authSlice.reducer;

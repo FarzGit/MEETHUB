@@ -85,6 +85,8 @@ export class UserAdapters {
             })
 
         } catch (error) {
+            console.log('sddddddddddddddddddddddd',error);
+            
             next(error)
 
         }

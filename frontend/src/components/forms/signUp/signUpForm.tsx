@@ -159,9 +159,6 @@ const MyModal: React.FC = () => {
                                                 const decoded = jwtDecode(credentialResponse.credential) as DecodedCredential;
                                                 const { name, email } = decoded;                            
                                                 const username = name
-
-                                                
-
                                                 const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
                                                 let password = '';
                                                 for (let i = 0; i < 6; i++) {
@@ -175,9 +172,6 @@ const MyModal: React.FC = () => {
                                                     console.log(username)
                                                     // console.log(email)
                                                     // console.log(password)
-
-
-
                                                     const res = await googleAuth({ username, email, password }).unwrap()
                                                     // console.log(res.data)
                                                     dispatch(setCredential({ ...res.data }));

@@ -7,11 +7,10 @@ import PrivateRouter from "./validations/privateRouter";
 import AdminLoginPage from "./pages/Admin/adminLoginPage/adminLoginPage";
 import PremiumPage from "./pages/User/Premium/premium";
 import UsersList from "./pages/Admin/usersList/usersList";
-import AdminNavBar from "./components/Navbar/adminNavBar";
 import MeetInterface from "./pages/meet/meetInterface";
-// import { Elements} from '@stripe/react-stripe-js';
-// import { loadStripe } from '@stripe/stripe-js';
-// const stripePromise = loadStripe('pk_test_51PB8mpSEVuL1FI1r7jbat474TSCFRPHyJBxZJkbNmanTC7QwN0bapTeuqBuratB79rcP6CkIMykmkkeEClILnPGj0071Q53iFl');
+import AdninPrivateRouter from "./validations/adminPrivateRoute";
+
+
 
 
 
@@ -29,15 +28,12 @@ function App() {
             <Route path="/home" element={<MainPage />} />
             <Route path="/premium" element={<PremiumPage />} />
           </Route>
+
           <Route path="/admin-login" element={<AdminLoginPage/>} />
-         
-
+          <Route element={<AdninPrivateRouter/>}>
           <Route path="/users-list" element={<UsersList/>} />
-          <Route path="/admin-nav" element={<AdminNavBar/>} />
+          </Route>
           <Route path="/meet" element={<MeetInterface/>} />
-
-          
-
         </Routes>
       </BrowserRouter>
     </>

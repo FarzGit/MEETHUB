@@ -1,4 +1,4 @@
-
+import { IUser } from "../../../domain/user";
 
 
 export interface StoreData{
@@ -16,9 +16,14 @@ export interface IResponse<T = StoreData | string |null>{
     message?:string;
     data?:T|undefined;
     token?:string;
-    // clientSecret?: string | null;
-    // isSuccess ?: boolean | null;
-    // payment?: Payment | undefined
+}
+
+export interface IUserResponse<T = IUser| IUser[]|string>{
+    status: number;
+    success: boolean;
+    message?: string;
+    data?: T;
+    token? : string
 
 }
 
@@ -42,4 +47,21 @@ export interface paymentDatas{
     transactionId?:string;
     userId?:string;
     email?:string;
+}
+
+
+export interface adminStoreData{
+    _id?:string;
+    email?:string;
+    userId?:string;
+
+}
+
+export interface adminResponse<T = adminStoreData | string >{
+    status:number;
+    success?:boolean;
+    message?:string;
+    data?:T|undefined;
+    token?:string;
+
 }

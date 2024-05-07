@@ -8,6 +8,11 @@ import { findUser } from "./user/findUser";
 import { forgotPassword } from "./user/forgotPassword";
 import { payment } from "./user/payment";
 import PaymentModel from "../model/paymentModel";
+import { blockUser } from "./user/blockUser";
+
+
+
+
 
 
 // This class for exporting all the single data base operation together
@@ -43,6 +48,10 @@ export class UserRepository implements IUserRepository {
     async paymentData(email:string,amount:string,transactionId:string,userId:string):Promise<paymentDatas>{
         return paymentData(email,amount,transactionId,userId,this.paymentModel)
 
+    }
+
+    async blockUser(_id:string):Promise<string|null>{
+        return blockUser(_id,this.userModel)
     }
 
 }

@@ -10,6 +10,18 @@ export interface FormSignIn{
     password:string
 }
 
+export interface IUser{
+    _id:string;
+    email:string;
+    username:string;
+    isBlocked:boolean;
+    isVerified:boolean;
+    isPremium:boolean
+
+
+
+}
+
 
 
 export interface MyError {

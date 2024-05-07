@@ -58,13 +58,13 @@ const SignInModal: React.FC = () => {
 
                 const { email, password } = values
                 const res = await userLogin({ email, password }).unwrap()
+                console.log(res);
+                
 
                 dispatch(setCredential({ ...res.data }))
                 dispatch(closeSignInModal())
                 navigate('/home')
                 toast.success(res.message)
-
-
             } catch (err) {
                 console.log(err)
                 toast.error((err as MyError)?.data?.message || (err as MyError)?.error);

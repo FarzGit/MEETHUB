@@ -12,7 +12,6 @@ import { sendForgetPassOtp } from "./user/sendForgetPassOtp";
 import { createPayment } from "./user/createPayment";
 import IStripe from "../interface/services/IStripe";
 import { confirmPayment } from "./user/confirmPayment";
-import { IcreatePayment } from "../interface/services/Iresponse";
 import { finalConfirmation } from "./user/finalConfirmation";
 
 

@@ -38,8 +38,10 @@ export const googleAuth = async (
         }
 
         if (user && user._id) {
+            if (user.isBlocked) {
+                throw ErrorResponse.badRequest("You account is blocked");
+              }
             const token = jwt.createJWT(user._id, user.email, "user", user.username);
-
             const responseData: StoreData = {
                 _id: user._id,
                 username: user.username,

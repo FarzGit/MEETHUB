@@ -1,7 +1,6 @@
 
 import './landingPageNav.css'
 import { MdWorkspacePremium } from "react-icons/md";
-import { BsFillBrightnessHighFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/store';

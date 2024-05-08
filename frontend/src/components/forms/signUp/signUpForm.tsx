@@ -52,7 +52,6 @@ const MyModal: React.FC = () => {
         onSubmit: async (values) =>{
             dispatch(setRegister({ ...values }));
             try {
-                console.log(values)
                 const { username, email } = values;
                 const res = await otpSendToEmail({ username, email }).unwrap();
                     dispatch(closeSignupModal());
@@ -170,10 +169,8 @@ const MyModal: React.FC = () => {
                                                 try {
 
                                                     console.log(username)
-                                                    // console.log(email)
-                                                    // console.log(password)
+                                                    
                                                     const res = await googleAuth({ username, email, password }).unwrap()
-                                                    // console.log(res.data)
                                                     dispatch(setCredential({ ...res.data }));
                                                     dispatch(closeSignupModal())
                                                     toast.success(res.message);
@@ -185,7 +182,6 @@ const MyModal: React.FC = () => {
                                                     );
                                                 }
                                             } else {
-                                                console.log("Credential not found");
                                                 toast.error("Credential not found")
                                             }
 

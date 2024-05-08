@@ -7,7 +7,6 @@ import { Provider } from 'react-redux'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const client = import.meta.env.VITE_CLIENT_ID
-console.log('the client is :',client)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

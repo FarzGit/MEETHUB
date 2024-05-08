@@ -12,7 +12,8 @@ const UsersList = () => {
     const [getUsers] = useGetUsersMutation()
     const [blockAndUnblockUser] = useBlockAndUnblockUserMutation()
     const [users, setUsers] = useState<IUser[]>([])
-    const { userInfo } = useSelector((state: RootState) => state.authSlice)
+    const  userInfo  = useSelector((state:RootState) => state.authSlice.userInfo)
+    console.log('werwewwwwwwwwwwwwwww',userInfo)
     const dispatch = useDispatch()
     const [logout] = useLogoutMutation()
     const [search, setSearch] = useState('')
@@ -48,6 +49,15 @@ const UsersList = () => {
         if (result.isConfirmed) {
             try {
                  await blockAndUnblockUser({ id }).unwrap()
+                 console.log('entered uerlist',userInfo)
+                 console.log('entered uerlist',userInfo?._id)
+                 console.log('entered uerlist',id)
+
+                 if (userInfo && userInfo._id === id) {
+                    console.log('entered uerlist')
+                    await logout('').unwrap()
+                    dispatch(userLogOut())
+                }
                 
                 setUsers(users => users.map(user => {
                     if (user._id === id) {
@@ -56,10 +66,7 @@ const UsersList = () => {
                     return user
                 }))
                 
-                if (userInfo && userInfo._id === id) {
-                    await logout('').unwrap()
-                    dispatch(userLogOut())
-                }
+               
                 Swal.fire('Success', 'User blocked/unblocked successfully!', 'success')
             } catch (error) {
                 console.error(error)

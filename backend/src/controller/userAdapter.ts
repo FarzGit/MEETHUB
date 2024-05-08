@@ -85,8 +85,6 @@ export class UserAdapters {
             })
 
         } catch (error) {
-            console.log('sddddddddddddddddddddddd',error);
-            
             next(error)
 
         }
@@ -274,6 +272,30 @@ export class UserAdapters {
             next(error);
         }
     }
+
+
+    async checkUserIsBlocked(req: Req, res: Res, next: Next) {
+        try {
+
+            const email = req.query.email
+
+            const user = await this.userusecases.checkUserIsBlocked(email as string)
+
+            if (user) {
+                res.status(user.status).json({
+                    success: user.success,
+                    message: user.message,
+                    data:user.data
+                })
+            }
+
+        } catch (err) {
+            console.log(err)
+            next(err)
+
+        }
+    }
+
 
     
 

@@ -13,6 +13,7 @@ import { createPayment } from "./user/createPayment";
 import IStripe from "../interface/services/IStripe";
 import { confirmPayment } from "./user/confirmPayment";
 import { finalConfirmation } from "./user/finalConfirmation";
+import { checkUserIsBlocked } from "./user/checkUserIsBlocked";
 
 
 export class UserUseCase {
@@ -124,6 +125,10 @@ export class UserUseCase {
 
     async finalConfirmation({email,amount,transactionId,userId}:{email:string,amount:string,transactionId:string,userId:string}){
         return finalConfirmation(this.userRepository,email,amount,transactionId,userId)
+    }
+
+    async checkUserIsBlocked(email:string){
+        return checkUserIsBlocked(this.userRepository,email)
     }
 
 

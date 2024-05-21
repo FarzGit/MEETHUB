@@ -53,6 +53,10 @@ router.post('/webhook',(req:Request,res:Response,next:NextFunction)=>{
     userAdapter.webhook(req,res,next)
 })
 
+router.post('/isBlock',(req:Request,res:Response,next:NextFunction)=>{
+    userAdapter.checkUserIsBlocked(req,res,next)
+})
+
 
 
 

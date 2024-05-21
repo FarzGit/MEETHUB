@@ -10,5 +10,5 @@ export interface IUserRepository{
     forgotPassword(newPassword:IforgotPassword):Promise<StoreData>;
     payment(email:string):Promise<StoreData>;
     paymentData(email:string,amount:string,transactionId:string,userId:string): Promise<paymentDatas>;
-    blockUser(_id:string):Promise<string|null>
+    blockUser(_id:string):Promise<StoreData|null>
 }

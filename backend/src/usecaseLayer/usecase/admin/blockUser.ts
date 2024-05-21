@@ -16,6 +16,7 @@ export const blockUser = async(
         return{
             status:200,
             success:true,
+            data:block,
             message:'Successfully Updated'
         }
     } catch (error) {

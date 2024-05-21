@@ -2,7 +2,7 @@
 import { IUserRepository } from "../../interface/repository/IuserRepository";
 import INodemailer from "../../interface/services/Inodemailer";
 import {IResponse } from "../../interface/services/Iresponse";
-import ErrorResponse from "../../handler/errorResponse";
+import {ErrorResponse} from "../../handler/errorResponse";
 
 
 

@@ -1,5 +1,5 @@
 
-import ErrorResponse from "../../handler/errorResponse";
+import {ErrorResponse} from "../../handler/errorResponse";
 import { IResponse } from "../../interface/services/Iresponse";
 import IStripe from "../../interface/services/IStripe";
 

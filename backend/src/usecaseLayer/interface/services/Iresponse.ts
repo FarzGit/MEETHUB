@@ -22,7 +22,7 @@ export interface IUserResponse<T = IUser| IUser[]|string>{
     status: number;
     success: boolean;
     message?: string;
-    data?: T;
+    data?: T|boolean|undefined|null;
     token? : string
 
 }

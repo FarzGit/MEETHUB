@@ -13,7 +13,7 @@ import { useFormik } from 'formik';
 import { VerifyEmail } from '../../../validations/validationTypes';
 import { toast } from 'react-toastify';
 import { MyError } from '../../../validations/validationTypes';
-
+import '../SignUp/signUp.css'
 
 
 

@@ -1,4 +1,4 @@
-class ErrorResponse extends Error {
+export class ErrorResponse extends Error {
     status: number;
     message: string;
 
@@ -28,5 +28,3 @@ class ErrorResponse extends Error {
         return new ErrorResponse(500, msg);
     }
 }
-
-export default ErrorResponse;

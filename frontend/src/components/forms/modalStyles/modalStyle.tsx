@@ -8,6 +8,7 @@ const style: React.CSSProperties = {
     border: 'none',
     padding: 4,
     borderRadius: 2,
+
 };
 
 export default style

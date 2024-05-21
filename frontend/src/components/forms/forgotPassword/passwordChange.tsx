@@ -12,7 +12,7 @@ import { newPasswordValidation } from '../../../validations/yupValidation.tsx';
 import { useForgotPasswordMutation } from '../../../slices/userSlice.ts';
 import { clearForgotRegister } from '../../../slices/authSlice.ts';
 import { toast } from 'react-toastify';
-
+import '../SignUp/signUp.css'
 
 const PasswordChange = ()=>{
 

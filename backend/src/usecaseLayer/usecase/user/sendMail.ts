@@ -1,4 +1,4 @@
-import ErrorResponse from "../../handler/errorResponse";
+import {ErrorResponse} from "../../handler/errorResponse";
 import { IUserRepository } from "../../interface/repository/IuserRepository";
 import INodemailer from "../../interface/services/Inodemailer";
 import { IResponse } from "../../interface/services/Iresponse";
@@ -29,7 +29,7 @@ export const verifyEmail = async (
             }
 
         }
-        throw ErrorResponse.badRequest('The email already exist')
+        throw ErrorResponse.forbidden('The email already exist')
 
 
 

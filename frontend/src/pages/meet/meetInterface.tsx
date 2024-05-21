@@ -1,8 +1,21 @@
-
-
+import { JitsiMeeting } from '@jitsi/react-sdk';
 
 
 const MeetInterface = () => {
+
+
+    const options = {
+        roomName: 'YourMeetingName',
+        parentNode: 'jitsi-container',
+        configOverwrite: {
+            startWithAudioMuted: true,
+            startWithVideoMuted: true
+        },
+        interfaceConfigOverwrite: {
+            DISABLE_JOIN_LEAVE_NOTIFICATIONS: true
+        }
+    };
+
 
 
     return (
@@ -16,11 +29,16 @@ const MeetInterface = () => {
                 </div>
 
 
-                <div className="bg-[#1A1B20] h-[80%] rounded-t-xl">
+                <div className="bg-[#1A1B20] h-[700px] rounded-t-xl">
 
-                    <div>
-                        
-                    </div>
+                <div style={{ height: '700px', width: '100%' }}>
+            <JitsiMeeting
+                roomName={options.roomName}
+                configOverwrite={options.configOverwrite}
+                interfaceConfigOverwrite={options.interfaceConfigOverwrite}
+                getIFrameRef={node => node.style.height = '100%'}
+            />
+        </div>
 
                 </div>
 

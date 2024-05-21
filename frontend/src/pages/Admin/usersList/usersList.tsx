@@ -20,12 +20,12 @@ const UsersList = () => {
 
 
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const user = await getUsers('').unwrap()
                 setUsers(user.data)
+
             } catch (err) {
                 console.error('Failed to fetch users:', err)
                 Swal.fire('Error', 'Failed to load users data.', 'error')

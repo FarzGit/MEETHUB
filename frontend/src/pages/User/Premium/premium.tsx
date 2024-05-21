@@ -7,13 +7,36 @@ import { RootState } from "../../../redux/store";
 import { Link } from "react-router-dom";
 const public_stripe_key = import.meta.env.VITE_PUBLIC_STRIPE_KEY
 // const stripePromise = loadStripe('pk_test_51PB8mpSEVuL1FI1r7jbat474TSCFRPHyJBxZJkbNmanTC7QwN0bapTeuqBuratB79rcP6CkIMykmkkeEClILnPGj0071Q53iFl');
+import { useBlockAndUnblockUserMutation } from "../../../slices/adminSlice";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+
 
 
 const PremiumPage = () => {
 
-    // const dispatch = useDispatch()
+    
     const {userInfo} = useSelector((state:RootState)=>state.authSlice)
     const [payment] = usePaymentMutation()
+    const [blockAndUnblockUser] = useBlockAndUnblockUserMutation()
+    const [isPremium,setIsPremium]=useState(false)
+    console.log(isPremium)
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const id = userInfo._id;
+                const res = await blockAndUnblockUser({ id }).unwrap();
+                setIsPremium(res.data.isPremium)
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    
+        fetchData(); 
+    
+    }, []);
 
 
     
@@ -40,6 +63,14 @@ const PremiumPage = () => {
             console.error('Failed to initialize Stripe');
             // Handle the error appropriately
         }
+
+    }
+
+
+    const handlePurchased = (e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault();
+
+        toast.error('You already a premium member')
 
     }
 
@@ -79,10 +110,17 @@ const PremiumPage = () => {
                                 </p>
                             </div>
                         </div>
-                        <form onSubmit={handlePurchase} >
+                        <form  >
                             {/* <CardElement /> */}
                             <div>
-                                <button type="submit" className=" btn mt-6 " >Purchase</button>
+                                {isPremium?(
+
+                                    <button onClick={handlePurchased}  className=" btns mt-6 " >Purchased</button>
+
+                                ):(
+
+                                <button onClick={handlePurchase} className=" btn mt-6 " >Purchase</button>
+                                )}
                             </div>
                         </form>
                     </div>

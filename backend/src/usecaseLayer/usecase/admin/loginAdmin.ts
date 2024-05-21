@@ -46,7 +46,7 @@ export const loginAdmin = async (
             };
         }
     } catch (error) {
-        // console.log(error);
+        console.log(error);
         throw error;
     }
 };

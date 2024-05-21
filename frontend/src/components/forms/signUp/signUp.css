@@ -1,21 +1,19 @@
-.modal-overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  transition: opacity 0.3s ease-in-out; /* Ease-in/out transition for opacity */
+
+
+
+
+
+
+@media (max-width: 640px) {
+  .MuiBox-root {
+    width: 95%!important; 
+  }
 }
 
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out; /* Ease-in/out transition for transform */
+@media screen and (min-width: 640px) and (max-width: 967px) {
+  .MuiBox-root {
+    width: 50% !important; 
+  }
 }
 
-/* Optional: Add styles to hide the modal initially */
-/* .modal-content {
-    opacity: 0;
-    pointer-events: none;
-  } */
+

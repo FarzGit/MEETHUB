@@ -243,13 +243,8 @@ export class UserAdapters {
                     const email = metadata.email;
                     const userId = metadata.userId;
                     const amount = metadata.amount;
-
                     // console.log('the session is :', session)
-
-
-
                     transactionId = event.data.object.payment_intent;
-
                     // console.log('The transaction id is :', transactionId);
 
                     await this.userusecases.finalConfirmation({ email, amount, transactionId, userId })

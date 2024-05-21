@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore } from '@reduxjs/toolkit'
 import signupModal from '../slices/modalSlice/signupModalSlice.ts.ts'
 import SingInModalSlice from '../slices/modalSlice/SingInModalSlice.ts'
@@ -9,7 +10,7 @@ import verifyEmailSlice  from '../slices/modalSlice/verifyEmail.ts'
 import changePasswordSlice from '../slices/modalSlice/changePassword.ts'
 
 
-const Store = configureStore({
+const Store:any = configureStore({
 
     reducer: {
         signupModal: signupModal,

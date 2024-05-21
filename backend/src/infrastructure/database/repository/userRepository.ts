@@ -50,7 +50,7 @@ export class UserRepository implements IUserRepository {
 
     }
 
-    async blockUser(_id:string):Promise<string|null>{
+    async blockUser(_id:string):Promise<StoreData|null>{
         return blockUser(_id,this.userModel)
     }
 

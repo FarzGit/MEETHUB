@@ -19,7 +19,7 @@ import { clearRegister, setCredential, setRegister } from '../../../slices/authS
 import { useSendOtpTOMailMutation } from '../../../slices/userSlice.ts';
 import { openOtpModal } from '../../../slices/modalSlice/otp.ts';
 import { signUpValidation } from '../../../validations/yupValidation.tsx';
-
+import '../SignUp/signUp.css'
 
 
 
@@ -91,6 +91,7 @@ const MyModal: React.FC = () => {
     return (
         <div>
             <Modal
+            className='overflow-y-scroll '
                 open={openModal}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -101,7 +102,7 @@ const MyModal: React.FC = () => {
                         Sign Up
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <div>
+                        <div  >
                             <form onSubmit={handleSubmit}>
                                 <span className="text-[15px] p-1 text-gray-700">Username</span>
                                 <input

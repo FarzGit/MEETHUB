@@ -9,7 +9,8 @@ import style from '../ModalStyles/modalStyle.tsx';
 import { useSelector,useDispatch } from 'react-redux';
 import { RootState } from '../../../redux/store.ts';
 import { closeInterviewModal } from '../../../slices/modalSlice/createInterviewSlice.ts';
-
+import '../SignUp/signUp.css'
+import { Link } from 'react-router-dom';
 
 
 const CreateInterviewModal: React.FC = () => {
@@ -57,8 +58,9 @@ const CreateInterviewModal: React.FC = () => {
                                     className="mb-[2px] text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-blue-400 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
                                 />
                        
-                                <div className="flex flex-col items-center pt-4 justify-center gap-5">
-                                    <button type='submit' className="bg-blue-500 rounded-md h-[40px] w-[110px]   text-white">SignIn</button>
+                                
+                            <div className="flex flex-col items-center pt-4 justify-center gap-5">
+                                    <Link to='/meet'  className="bg-blue-500 rounded-md h-[40px] w-[110px]   text-white">Create</Link>
                                 </div>
                             </form>
                         </div>

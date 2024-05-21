@@ -35,7 +35,7 @@ export const verifyEmail = async (
 
 
     } catch (error) {
-        // console.log(error)
+        console.log(error)
         throw error
     }
 

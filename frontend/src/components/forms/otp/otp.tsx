@@ -15,6 +15,7 @@ import { openSignInModal } from '../../../slices/modalSlice/SingInModalSlice';
 import { MyError } from '../../../validations/validationTypes';
 import { openchangePasswordModal } from '../../../slices/modalSlice/changePassword';
 import PasswordChange from '../ForgotPassword/passwordChange';
+import '../SignUp/signUp.css'
 
 
 const OtpModal: React.FC = () => {

@@ -18,7 +18,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 import { openVerifyEmailModal } from '../../../slices/modalSlice/verifyEmail.ts';
 import EmailVerifications from '../ForgotPassword/EmailVerification.tsx';
-
+import '../SignUp/signUp.css'
 
 
 

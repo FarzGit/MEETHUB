@@ -22,7 +22,7 @@ const LandingPage = () => {
             <LandingPageNav />
             <div className="landingMainDiv pl-[75px] pr-[75px]  max-sm:pl-[30px] ">
                 <div className="md:flex justify-between items-center">
-                    <div className="flex flex-col  w-[400px] max-sm:w-[100%] leading-[23px]  ">
+                    <div className="flex flex-col  w-[400px] max-sm:w-[100%] sm:flex sm:justify-center leading-[23px]   ">
                         <span className="font-normal text-[55px] md:text-[65px] leading-[65px] max-sm:leading-[30px] max-sm:text-[30px]" >Welcome to <span className=" meethub text-[60px] max-sm:text-[30px] font-bold ">Meethub</span>  </span>
                         <span className="wrap-text pt-4 text-gray-500">Meethub is your premier destination for
                             seamless online meetings

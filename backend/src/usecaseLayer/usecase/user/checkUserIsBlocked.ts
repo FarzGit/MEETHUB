@@ -15,7 +15,7 @@ export const checkUserIsBlocked =async (
         return {
             status:200,
             success:true,
-            data:user?.isBlocked
+            data:user
             
         }
         

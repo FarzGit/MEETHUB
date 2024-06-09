@@ -47,6 +47,8 @@ const PremiumPage = () => {
 
         const stripePromise: Stripe | null  = await loadStripe(public_stripe_key);
 
+        
+
         const userId = userInfo?._id
         const email = userInfo?.email
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import LandingPage from "./pages/User/landingPage/landingPage"
 import MainPage from "./pages/User/userMainPage/mainPage";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -14,7 +15,10 @@ import AdninPrivateRouter from "./validations/adminPrivateRoute";
 
 
 
+
 function App() {
+
+  
 
 
   return (
@@ -33,7 +37,7 @@ function App() {
           <Route element={<AdninPrivateRouter/>}>
           <Route path="/users-list" element={<UsersList/>} />
           </Route>
-          <Route path="/meet" element={<MeetInterface/>} />
+          <Route path="/meet/:roomId" element={<MeetInterface/>} />
         </Routes>
       </BrowserRouter>
     </>

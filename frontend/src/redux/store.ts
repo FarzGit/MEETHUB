@@ -19,11 +19,7 @@ const Store:any = configureStore({
         authSlice: authSlice,
         createInterviewSlice:createInterviewSlice,
         verifyEmailSlice:verifyEmailSlice,
-        changePasswordSlice:changePasswordSlice
-
-
-
-
+        changePasswordSlice:changePasswordSlice,
 
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
@@ -31,8 +27,6 @@ const Store:any = configureStore({
 
 })
 export default Store
-
-
 // Infer the RootState and AppDispatch types from the store itself
 export type RootState = ReturnType<typeof Store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

@@ -1,0 +1,30 @@
+.bg-container {
+    background-color: #1A1B20;
+    height: 500px;
+    border-radius: 1rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container {
+    max-width: 16rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+#remoteVideos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+}
+
+#remoteVideos video {
+    width: 100%;
+    max-width: 16rem;
+    border-radius: 0.5rem;
+}

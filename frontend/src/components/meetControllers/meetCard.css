@@ -1,15 +1,16 @@
 .bg-container {
     background-color: #1A1B20;
-    height: 500px;
+    height: 600px;
     border-radius: 1rem;
     display: flex;
     gap: 1.25rem;
     align-items: center;
     justify-content: center;
+    
 }
 
 .video-container {
-    max-width: 16rem;
+    max-width:35rem;
     border-radius: 0.5rem;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

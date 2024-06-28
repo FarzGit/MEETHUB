@@ -30,8 +30,4 @@ Follow these instructions to get a copy of the project up and running on your lo
 - MongoDB
 - Stripe account for payment integration
 
-### Installation
 
-1. Clone the repo:
-   ```sh
-   git clone https://github.com/yourusername/yourrepo.git

@@ -16,7 +16,7 @@ This is an interview scheduling application similar to Google Meet or Zoom. It s
 
 Here are some screenshots of the application:
 
-![Home Page](Screenshot 2024-06-28 164021.png)
+![Home Page](https://github.com/FarzGit/MEETHUB/blob/master/Screenshot%202024-06-28%20164021.png)
 ![Video Call](path/to/videocall_screenshot.png)
 ![Chat Feature](path/to/chat_screenshot.png)
 

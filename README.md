@@ -16,7 +16,7 @@ This is an interview scheduling application similar to Google Meet or Zoom. It s
 
 Here are some screenshots of the application:
 
-![Home Page](path/to/homepage_screenshot.png)
+![Home Page](Screenshot 2024-06-28 164021.png)
 ![Video Call](path/to/videocall_screenshot.png)
 ![Chat Feature](path/to/chat_screenshot.png)
 
